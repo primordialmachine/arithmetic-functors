@@ -25,16 +25,9 @@
 
 #pragma once
 
-#include "primordialmachine/math/functor/binary_minus_functor.hpp"
-#include "primordialmachine/math/functor/binary_plus_functor.hpp"
-#include "primordialmachine/math/functor/binary_slash_functor.hpp"
-#include "primordialmachine/math/functor/binary_star_functor.hpp"
-#include "primordialmachine/math/functor/equal_to_functor.hpp"
-#include "primordialmachine/math/functor/greater_than_functor.hpp"
-#include "primordialmachine/math/functor/lower_than_functor.hpp"
-#include "primordialmachine/math/functor/lower_than_or_equal_to_functor.hpp"
-#include "primordialmachine/math/functor/not_equal_to_functor.hpp"
-#include "primordialmachine/math/functor/unary_minus_functor.hpp"
-#include "primordialmachine/math/functor/unary_plus_functor.hpp"
-#include "primordialmachine/math/functor/elementwise_unary_functor.hpp"
-#include "primordialmachine/math/functor/elementwise_binary_functor.hpp"
+namespace primordialmachine {
+
+template<typename LEFT_OPERAND, typename RIGHT_OPERAND, typename ENABLED = void>
+struct greater_than_functor;
+
+} // namespace primordialmachine
