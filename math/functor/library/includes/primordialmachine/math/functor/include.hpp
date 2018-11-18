@@ -33,3 +33,5 @@
 #include "primordialmachine/math/functor/not_equal_to_functor.hpp"
 #include "primordialmachine/math/functor/unary_minus_functor.hpp"
 #include "primordialmachine/math/functor/unary_plus_functor.hpp"
+#include "primordialmachine/math/functor/elementwise_unary_functor.hpp"
+#include "primordialmachine/math/functor/elementwise_binary_functor.hpp"
