@@ -105,6 +105,9 @@ A \textit{BinaryFunctor} representing the binary expression \verb|left_operand =
 \subsubsection{\texttt{struct not\_equal\_to\_functor}}
 A \textit{BinaryFunctor} representing the binary expression \verb|left_operand != right_operand|.
 
+\subsubsection{\texttt{struct lower\_than\_functor}}
+A \textit{BinaryFunctor} representing the binary expression \verb|left_operand < right_operand|.
+
 \subsection{\textit{concept UnaryFunctor}}
 A \textit{UnaryFunctor} is a function object with two template arguments \verb+LEFT_OPERAND+,
 \verb+RIGHT_OPERAND+, and \verb+ENABLED+. Specializations of this type must provide a

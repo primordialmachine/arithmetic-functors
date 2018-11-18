@@ -62,6 +62,9 @@
     <ClInclude Include="includes\primordialmachine\math\functor\unary_minus_functor.hpp">
       <Filter>Headerdateien\math\functor</Filter>
     </ClInclude>
+    <ClInclude Include="includes\primordialmachine\math\functor\lower_than_functor.hpp">
+      <Filter>Headerdateien\math\functor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="package.props" />
