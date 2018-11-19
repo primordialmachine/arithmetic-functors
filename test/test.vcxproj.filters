@@ -10,7 +10,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sources\functor_test.cpp">
+    <ClCompile Include="sources\arithmetic_functors_test.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

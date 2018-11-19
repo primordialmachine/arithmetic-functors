@@ -34,27 +34,27 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)products\$(ProjectName)\$(Platform.toLower())\$(Configuration.toLower())\</OutDir>
-    <IntDir>$(SolutionDir)intermediates\$(ProjectName)\$(Platform.toLower())\$(Configuration.toLower())\</IntDir>
-    <TargetName>math-test</TargetName>
+    <OutDir>$(SolutionDir)products\arithmetic-functors-test\$(Platform.toLower())\$(Configuration.toLower())\</OutDir>
+    <IntDir>$(SolutionDir)intermediates\arithmetic-functors-test\$(Platform.toLower())\$(Configuration.toLower())\</IntDir>
+    <TargetName>arithmetic-functors-test</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)products\$(ProjectName)\$(Platform.toLower())\$(Configuration.toLower())\</OutDir>
-    <IntDir>$(SolutionDir)intermediates\$(ProjectName)\$(Platform.toLower())\$(Configuration.toLower())\</IntDir>
-    <TargetName>math-test</TargetName>
+    <OutDir>$(SolutionDir)products\arithmetic-functors-test\$(Platform.toLower())\$(Configuration.toLower())\</OutDir>
+    <IntDir>$(SolutionDir)intermediates\arithmetic-functors-test\$(Platform.toLower())\$(Configuration.toLower())\</IntDir>
+    <TargetName>arithmetic-functors-test</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)products\$(ProjectName)\$(Platform.toLower())\$(Configuration.toLower())\</OutDir>
-    <IntDir>$(SolutionDir)intermediates\$(ProjectName)\$(Platform.toLower())\$(Configuration.toLower())\</IntDir>
-    <TargetName>math-test</TargetName>
+    <OutDir>$(SolutionDir)products\arithmetic-functors-test\$(Platform.toLower())\$(Configuration.toLower())\</OutDir>
+    <IntDir>$(SolutionDir)intermediates\arithmetic-functors-test\$(Platform.toLower())\$(Configuration.toLower())\</IntDir>
+    <TargetName>arithmetic-functors-test</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)products\$(ProjectName)\$(Platform.toLower())\$(Configuration.toLower())\</OutDir>
-    <IntDir>$(SolutionDir)intermediates\$(ProjectName)\$(Platform.toLower())\$(Configuration.toLower())\</IntDir>
-    <TargetName>math-test</TargetName>
+    <OutDir>$(SolutionDir)products\arithmetic-functors-test\$(Platform.toLower())\$(Configuration.toLower())\</OutDir>
+    <IntDir>$(SolutionDir)intermediates\arithmetic-functors-test\$(Platform.toLower())\$(Configuration.toLower())\</IntDir>
+    <TargetName>arithmetic-functors-test</TargetName>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="sources\functor_test.cpp" />
+    <ClCompile Include="sources\arithmetic_functors_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -74,7 +74,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>$(SolutionDir)packages\primordialmachine\math\functor\$(Platform.toLower())\$(Configuration.toLower())\includes;$(ProjectDir)includes;$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)packages\primordialmachine\arithmetic-functors\$(Platform.toLower())\$(Configuration.toLower())\includes;$(ProjectDir)includes;$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -92,7 +92,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>$(SolutionDir)packages\primordialmachine\math\functor\$(Platform.toLower())\$(Configuration.toLower())\includes;$(ProjectDir)includes;$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)packages\primordialmachine\arithmetic-functors\$(Platform.toLower())\$(Configuration.toLower())\includes;$(ProjectDir)includes;$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -108,7 +108,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(SolutionDir)packages\primordialmachine\math\functor\$(Platform.toLower())\$(Configuration.toLower())\includes;$(ProjectDir)includes;$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)packages\primordialmachine\arithmetic-functors\$(Platform.toLower())\$(Configuration.toLower())\includes;$(ProjectDir)includes;$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -126,7 +126,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(SolutionDir)packages\primordialmachine\math\functor\$(Platform.toLower())\$(Configuration.toLower())\includes;$(ProjectDir)includes;$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)packages\primordialmachine\arithmetic-functors\$(Platform.toLower())\$(Configuration.toLower())\includes;$(ProjectDir)includes;$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>

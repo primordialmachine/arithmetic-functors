@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// Primordial Machine's Math Library
+// Primordial Machine's Arithmetic Functors Library
 // Copyright (C) 2017-2018 Michael Heilmann
 //
 // This software is provided 'as-is', without any express or implied warranty.
@@ -25,19 +25,35 @@
 
 #pragma once
 
+#include <type_traits>
+
 namespace primordialmachine {
 
-struct functor
+template<typename OPERAND,
+         typename RESULT,
+         size_t NUMBER_OF_ELEMENTS,
+         typename OPERATOR,
+         typename ENABLED = void>
+struct elementwise_unary_functor
 {
-}; // struct functor
+  using operand_type = OPERAND;
 
-template<typename TYPE>
-struct is_functor
-{
-  static constexpr bool value = std::is_base_of<functor, TYPE>::value;
-}; // struct is_functor
+  using result_type = RESULT;
 
-template<typename TYPE>
-inline bool constexpr is_functor_v = is_functor<TYPE>::value;
+  using operator_type = OPERATOR;
+
+  constexpr result_type operator()(operand_type const& operand) const
+  {
+    return impl(operand, std::make_index_sequence<NUMBER_OF_ELEMENTS>());
+  }
+
+private:
+  template<size_t... Is>
+  auto impl(const operand_type& operand, std::index_sequence<Is...>) const
+  {
+    static const auto op = OPERATOR();
+    return result_type{ op(operand(Is))... };
+  }
+}; // struct elementwise_unary_functor
 
 } // namespace primordialmachine

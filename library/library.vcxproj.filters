@@ -9,78 +9,54 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Headerdateien\math">
-      <UniqueIdentifier>{7e1fd6f4-f18d-44db-92f4-701a9af0e1a4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headerdateien\math\functor">
+    <Filter Include="Headerdateien\arithmetic_functors">
       <UniqueIdentifier>{510d7c33-3377-4891-bb0e-7c8ceab767b7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Quelldateien\math">
-      <UniqueIdentifier>{0d8923f4-45ac-471f-bc25-ef8d4355e996}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\math\functor">
+    <Filter Include="Quelldateien\arithmetic_functors">
       <UniqueIdentifier>{19c5bbaf-025e-45c2-848f-a25bde588aea}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="includes\primordialmachine\math\functor\binary_minus_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\binary_minus_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\binary_plus_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\binary_plus_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\binary_slash_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\binary_slash_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\binary_star_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\binary_star_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\elementwise_binary_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\elementwise_binary_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\elementwise_unary_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\elementwise_unary_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\equal_to_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\include.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\include.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\scalar_generator_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\not_equal_to_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\unary_plus_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\scalar_generator_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\unary_plus_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\unary_minus_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\lower_than_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\greater_than_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\lower_than_or_equal_to_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\primordialmachine\math\functor\greater_than_or_equal_to_functor.hpp">
-      <Filter>Headerdateien\math\functor</Filter>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\unary_minus_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="package.props" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sources\primordialmachine\math\functor\include.cpp">
-      <Filter>Quelldateien\math\functor</Filter>
+    <ClCompile Include="sources\primordialmachine\arithmetic_functors\include.cpp">
+      <Filter>Quelldateien\arithmetic_functors</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -13,9 +13,9 @@
 \input{common}
 
 \SetOrganization{Primordial Machine's}
-\SetLibraryName{Math Functor Library}
+\SetLibraryName{Arithmetic Functors Library}
 \SetLibraryVersion{v1.0}
-\SetLibraryRepository{https://github.com/primordialmachine/math-functor}
+\SetLibraryRepository{https://github.com/primordialmachine/arithmetic-functors}
 \SetAuthor{Michael Heilmann}
 \SetEmail{michaelheilmann@primordialmachine.com}
 
@@ -23,7 +23,7 @@
 \maketitle
 \tableofcontents
 \section{Synopsis}
-C++ 17 library provides vectors and matrices.
+C++ 17 library providing arithmetic functors.
 The library is made available publicly on
 \href{\GetLibraryRepository}{Github}
 under the
@@ -53,19 +53,19 @@ The library officially only supports Visual Studio 2017 and Windows 10.
   \begin{enumerate}
     \item the include path
 \begin{verbatim}
-[library home]/primordialmachine/math/functor/
+[library home]/primordialmachine/arithmetic-functors/
 $(Platform.toLower())/$(Configuration.toLower())/includes
 \end{verbatim}
 	and
     \item the library path
 \begin{verbatim}
-[library home]/primordialmachine/math/functor/
+[library home]/primordialmachine/arithmetic-functors/
 $(Platform.toLower())/$(Configuration.toLower())/libraries
 \end{verbatim}
     to your project.
 \end{enumerate}
-\item Link your project with the library \verb+math-functor.lib+.
-\item Add the include directive \verb+#include "primordialmachine/math/functor/include.hpp"+ where appropriate.
+\item Link your project with the library \verb+arithmetic-functors.lib+.
+\item Add the include directive \verb+#include "primordialmachine/arithmetic-functors/include.hpp"+ where appropriate.
 \item You can now use the functionality provided by the library.
 \end{enumerate}
 
@@ -98,24 +98,6 @@ A \textit{BinaryFunctor} representing the binary expression \verb|left_operand *
 
 \subsubsection{\texttt{struct binary\_slash\_functor}}
 A \textit{BinaryFunctor} representing the binary expression \verb|left_operand / right_operand|.
-
-\subsubsection{\texttt{struct equal\_to\_functor}}
-A \textit{BinaryFunctor} representing the binary expression \verb|left_operand == right_operand|.
-
-\subsubsection{\texttt{struct not\_equal\_to\_functor}}
-A \textit{BinaryFunctor} representing the binary expression \verb|left_operand != right_operand|.
-
-\subsubsection{\texttt{struct lower\_than\_functor}}
-A \textit{BinaryFunctor} representing the binary expression \verb|left_operand < right_operand|.
-
-\subsubsection{\texttt{struct lower\_than\_or\_equal\_to\_functor}}
-A \textit{BinaryFunctor} representing the binary expression \verb|left_operand <= right_operand|.
-
-\subsubsection{\texttt{struct greater\_than\_functor}}
-A \textit{BinaryFunctor} representing the binary expression \verb|left_operand > right_operand|.
-
-\subsubsection{\texttt{struct greater\_than\_or\_equal\_to\_functor}}
-A \textit{BinaryFunctor} representing the binary expression \verb|left_operand >= right_operand|.
 
 \subsection{\textit{concept UnaryFunctor}}
 A \textit{UnaryFunctor} is a function object with two template arguments \verb+LEFT_OPERAND+,

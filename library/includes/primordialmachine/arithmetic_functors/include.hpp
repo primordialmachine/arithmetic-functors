@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// Primordial Machine's Math Library
+// Primordial Machine's Arithmetic Functors Library
 // Copyright (C) 2017-2018 Michael Heilmann
 //
 // This software is provided 'as-is', without any express or implied warranty.
@@ -25,9 +25,11 @@
 
 #pragma once
 
-namespace primordialmachine {
-
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND, typename ENABLED = void>
-struct lower_than_functor;
-
-} // namespace primordialmachine
+#include "primordialmachine/arithmetic_functors/binary_minus_functor.hpp"
+#include "primordialmachine/arithmetic_functors/binary_plus_functor.hpp"
+#include "primordialmachine/arithmetic_functors/binary_slash_functor.hpp"
+#include "primordialmachine/arithmetic_functors/binary_star_functor.hpp"
+#include "primordialmachine/arithmetic_functors/elementwise_binary_functor.hpp"
+#include "primordialmachine/arithmetic_functors/elementwise_unary_functor.hpp"
+#include "primordialmachine/arithmetic_functors/unary_minus_functor.hpp"
+#include "primordialmachine/arithmetic_functors/unary_plus_functor.hpp"

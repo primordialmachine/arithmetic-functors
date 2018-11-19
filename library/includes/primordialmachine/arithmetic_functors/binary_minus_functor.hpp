@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// Primordial Machine's Math Library
+// Primordial Machine's Arithmetic Functors Library
 // Copyright (C) 2017-2018 Michael Heilmann
 //
 // This software is provided 'as-is', without any express or implied warranty.
@@ -27,7 +27,7 @@
 
 namespace primordialmachine {
 
-template<typename OPERAND, typename ENABLED = void>
-struct unary_plus_functor;
+template<typename LEFT_OPERAND, typename RIGHT_OPERAND, typename ENABLED = void>
+struct binary_minus_functor;
 
 } // namespace primordialmachine

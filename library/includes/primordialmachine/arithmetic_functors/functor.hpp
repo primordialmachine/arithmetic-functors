@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// Primordial Machine's Math Library
+// Primordial Machine's Arithmetic Functors Library
 // Copyright (C) 2017-2018 Michael Heilmann
 //
 // This software is provided 'as-is', without any express or implied warranty.
@@ -27,7 +27,17 @@
 
 namespace primordialmachine {
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND, typename ENABLED = void>
-struct lower_than_or_equal_to_functor;
+struct functor
+{
+}; // struct functor
+
+template<typename TYPE>
+struct is_functor
+{
+  static constexpr bool value = std::is_base_of<functor, TYPE>::value;
+}; // struct is_functor
+
+template<typename TYPE>
+inline bool constexpr is_functor_v = is_functor<TYPE>::value;
 
 } // namespace primordialmachine
