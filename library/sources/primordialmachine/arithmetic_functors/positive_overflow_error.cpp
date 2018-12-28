@@ -23,17 +23,30 @@
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma once
-
-#include "primordialmachine/arithmetic_functors/binary_minus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_plus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_slash_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_star_functor.hpp"
-#include "primordialmachine/arithmetic_functors/elementwise_binary_functor.hpp"
-#include "primordialmachine/arithmetic_functors/elementwise_unary_functor.hpp"
-#include "primordialmachine/arithmetic_functors/unary_minus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/unary_plus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/division_by_zero_error.hpp"
-#include "primordialmachine/arithmetic_functors/negative_overflow_error.hpp"
 #include "primordialmachine/arithmetic_functors/positive_overflow_error.hpp"
-#include "primordialmachine/arithmetic_functors/underflow_error.hpp"
+
+namespace primordialmachine {
+
+positive_overflow_error::positive_overflow_error(
+  positive_overflow_error::position_type position)
+  : parent_type("positive overflow error", position)
+{}
+
+positive_overflow_error*
+positive_overflow_error::clone_implementation() const
+{
+  return new positive_overflow_error(*this);
+}
+
+void
+positive_overflow_error::raise_implementation() const
+{
+  throw positive_overflow_exception(*this);
+}
+
+positive_overflow_exception::positive_overflow_exception(
+  const positive_overflow_error& error)
+  : parent_type(error)
+{}
+
+} // namespace primordialmachine

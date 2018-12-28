@@ -53,6 +53,9 @@
     <ClInclude Include="includes\primordialmachine\arithmetic_functors\negative_overflow_error.hpp">
       <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\positive_overflow_error.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
+    </ClInclude>
     <ClInclude Include="includes\primordialmachine\arithmetic_functors\division_by_zero_error.hpp">
       <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
@@ -68,6 +71,9 @@
       <Filter>Quelldateien\arithmetic_functors</Filter>
     </ClCompile>
     <ClCompile Include="sources\primordialmachine\arithmetic_functors\division_by_zero_error.cpp">
+      <Filter>Quelldateien\arithmetic_functors</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\primordialmachine\arithmetic_functors\positive_overflow_error.cpp">
       <Filter>Quelldateien\arithmetic_functors</Filter>
     </ClCompile>
     <ClCompile Include="sources\primordialmachine\arithmetic_functors\underflow_error.cpp">
