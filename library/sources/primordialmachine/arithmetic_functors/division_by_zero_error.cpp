@@ -23,14 +23,29 @@
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma once
-
-#include "primordialmachine/arithmetic_functors/binary_minus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_plus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_slash_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_star_functor.hpp"
-#include "primordialmachine/arithmetic_functors/elementwise_binary_functor.hpp"
-#include "primordialmachine/arithmetic_functors/elementwise_unary_functor.hpp"
-#include "primordialmachine/arithmetic_functors/unary_minus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/unary_plus_functor.hpp"
 #include "primordialmachine/arithmetic_functors/division_by_zero_error.hpp"
+
+namespace primordialmachine {
+
+division_by_zero_error::division_by_zero_error(
+  division_by_zero_error::position_type position)
+  : parent_type("division by zero error", position)
+{}
+
+division_by_zero_error* division_by_zero_error::clone_implementation() const
+{
+  return new division_by_zero_error(*this);
+}
+
+void
+division_by_zero_error::raise_implementation() const
+{
+  throw division_by_zero_exception(*this);
+}
+
+division_by_zero_exception::division_by_zero_exception(
+  const division_by_zero_error& error)
+  : parent_type(error)
+{}
+
+} // namespace primordialmachine

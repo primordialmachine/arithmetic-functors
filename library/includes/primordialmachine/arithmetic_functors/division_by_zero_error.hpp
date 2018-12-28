@@ -25,12 +25,29 @@
 
 #pragma once
 
-#include "primordialmachine/arithmetic_functors/binary_minus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_plus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_slash_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_star_functor.hpp"
-#include "primordialmachine/arithmetic_functors/elementwise_binary_functor.hpp"
-#include "primordialmachine/arithmetic_functors/elementwise_unary_functor.hpp"
-#include "primordialmachine/arithmetic_functors/unary_minus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/unary_plus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/division_by_zero_error.hpp"
+#include "primordialmachine/errors/include.hpp"
+
+namespace primordialmachine {
+
+ class division_by_zero_error;
+class division_by_zero_exception;
+
+class division_by_zero_error : public error
+{
+public:
+  using parent_type = error;
+  using position_type = error_position;
+  division_by_zero_error(position_type position);
+protected:
+  division_by_zero_error* clone_implementation() const override;
+  void raise_implementation() const override;
+}; // class division_by_zero_error
+
+class division_by_zero_exception : public exception
+{
+public:
+  using parent_type = exception;
+  division_by_zero_exception(const division_by_zero_error& error);
+}; // class division_by_zero_exception
+
+} // namespace primordialmachine
