@@ -25,14 +25,29 @@
 
 #pragma once
 
-#include "primordialmachine/arithmetic_functors/binary_minus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_plus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_slash_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_star_functor.hpp"
-#include "primordialmachine/arithmetic_functors/elementwise_binary_functor.hpp"
-#include "primordialmachine/arithmetic_functors/elementwise_unary_functor.hpp"
-#include "primordialmachine/arithmetic_functors/unary_minus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/unary_plus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/division_by_zero_error.hpp"
-#include "primordialmachine/arithmetic_functors/negative_overflow_error.hpp"
-#include "primordialmachine/arithmetic_functors/underflow_error.hpp"
+#include "primordialmachine/errors/include.hpp"
+
+namespace primordialmachine {
+
+class negative_overflow_error;
+class negative_overflow_exception;
+
+class negative_overflow_error : public error
+{
+public:
+  using parent_type = error;
+  using position_type = error_position;
+  negative_overflow_error(position_type position);
+protected:
+  negative_overflow_error* clone_implementation() const override;
+  void raise_implementation() const override;
+}; // struct negative_overflow_error
+
+class negative_overflow_exception : public exception
+{
+public:
+  using parent_type = exception;
+  negative_overflow_exception(const negative_overflow_error& error);
+}; // class negative_overflow_exception
+
+} // namespace primordialmachine
