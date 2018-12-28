@@ -53,6 +53,9 @@
     <ClInclude Include="includes\primordialmachine\arithmetic_functors\division_by_zero_error.hpp">
       <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\underflow_error.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="package.props" />
@@ -62,6 +65,9 @@
       <Filter>Quelldateien\arithmetic_functors</Filter>
     </ClCompile>
     <ClCompile Include="sources\primordialmachine\arithmetic_functors\division_by_zero_error.cpp">
+      <Filter>Quelldateien\arithmetic_functors</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\primordialmachine\arithmetic_functors\underflow_error.cpp">
       <Filter>Quelldateien\arithmetic_functors</Filter>
     </ClCompile>
   </ItemGroup>

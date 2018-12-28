@@ -23,15 +23,28 @@
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma once
-
-#include "primordialmachine/arithmetic_functors/binary_minus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_plus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_slash_functor.hpp"
-#include "primordialmachine/arithmetic_functors/binary_star_functor.hpp"
-#include "primordialmachine/arithmetic_functors/elementwise_binary_functor.hpp"
-#include "primordialmachine/arithmetic_functors/elementwise_unary_functor.hpp"
-#include "primordialmachine/arithmetic_functors/unary_minus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/unary_plus_functor.hpp"
-#include "primordialmachine/arithmetic_functors/division_by_zero_error.hpp"
 #include "primordialmachine/arithmetic_functors/underflow_error.hpp"
+
+namespace primordialmachine {
+
+underflow_error::underflow_error(underflow_error::position_type position)
+  : parent_type("underflow error", position)
+{}
+
+underflow_error*
+underflow_error::clone_implementation() const
+{
+  return new underflow_error(*this);
+}
+
+void
+underflow_error::raise_implementation() const
+{
+  throw underflow_exception(*this);
+}
+
+underflow_exception::underflow_exception(const underflow_error& error)
+  : parent_type(error)
+{}
+
+} // namespace primordialmachine
