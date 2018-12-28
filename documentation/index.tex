@@ -1,32 +1,35 @@
-\documentclass[oneside]{article}
+\documentclass[oneside]{report}
 
 \input{common}
 
 \SetOrganization{Primordial Machine's}
-\SetLibraryName{Arithmetic Functors Library}
+\SetLibraryName{Arithmetic Library}
 \SetLibraryVersion{v1.3}
-\SetLibraryRepository{https://github.com/primordialmachine/arithmetic-functors}
+\SetLibraryRepository{https://github.com/primordialmachine/arithmetic}
 \SetAuthor{Michael Heilmann}
 \SetEmail{michaelheilmann@primordialmachine.com}
 
 \begin{document}
 \maketitle
 \tableofcontents
-\section{Synopsis}
-C++ 17 library providing arithmetic functors.
+\chapter*{Synopsis}
+C++ 17 library providing arithmetic functors and arithmetic errors and exceptions.
 The library is made available publicly on
 \href{\GetLibraryRepository}{Github}
 under the
 \href{\GetLibraryRepository/blob/master/LICENSE}{MIT License}.
 
-\section{Limitations and Restrictions}
+\chapter{Limitations and Restrictions}
 The library officially only supports Visual Studio 2017 and Windows 10.
 
-\section{Introductory example}
+\chapter{Requirements}
+This library depends on the \href{https://github.com/primordialmachine/errors}{Primordial Machine's Errors Library}.
+
+\chapter{Introductory example}
 \textit{\color{orange}This library does not provide any examples yet.}
 %Examples are located in the \href{\GetLibraryRepository/blob/master/examples}{examples} directory.
 
-\section{Building under Visual Studio 2017}
+\chapter{Building under Visual Studio 2017}
 \begin{enumerate}
 \item Open the solution \texttt{solution.sln} in Microsoft Visual Studio 2017.
 \item Batch build everything.
@@ -59,13 +62,13 @@ $(PlatformTarget.toLower())/$(Configuration.toLower())/libraries
 \item You can now use the functionality provided by the library.
 \end{enumerate}
 
-\section{Library Interface Documentation}
+\chapter{Library Interface Documentation}
 
-\subsection{\texttt{namespace primordialmachine}}
+\section{\texttt{namespace primordialmachine}}
 The namespace this library is adding its declarations/definitions to.
 The added namespace elements are documented below.
 
-\subsection{\textit{concept BinaryFunctor}}
+\section{\textit{concept BinaryFunctor}}
 A \textit{BinaryFunctor} is a function object with three template arguments \verb+LEFT_OPERAND+,
 \verb+RIGHT_OPERAND+, and \verb+ENABLED+. Specializations of this type must provide a
 constant \verb+operator()+ with two parameters \verb+left_operand+ of type \verb+LEFT_OPERAND+
@@ -77,19 +80,19 @@ the \textit{BinaryFunctor} represents.\\
 \noindent{}The default type of \verb+ENABLED+ is \verb+void+. Specializations of this type may use
 the \verb+ENABLED+ argument to perform \textit{SFINAE}.
 
-\subsubsection{\texttt{struct binary\_plus\_functor}}
+\section{\texttt{struct binary\_plus\_functor}}
 A \textit{BinaryFunctor} representing the binary operation \verb|left_operand + right_operand|.
 
-\subsubsection{\texttt{struct binary\_minus\_functor}}
+\section{\texttt{struct binary\_minus\_functor}}
 A \textit{BinaryFunctor} representing the binary expression \verb|left_operand - right_operand|.
 
-\subsubsection{\texttt{struct binary\_star\_functor}}
+\section{\texttt{struct binary\_star\_functor}}
 A \textit{BinaryFunctor} representing the binary expression \verb|left_operand * right_operand|.
 
-\subsubsection{\texttt{struct binary\_slash\_functor}}
+\section{\texttt{struct binary\_slash\_functor}}
 A \textit{BinaryFunctor} representing the binary expression \verb|left_operand / right_operand|.
 
-\subsection{\textit{concept UnaryFunctor}}
+\section{\textit{concept UnaryFunctor}}
 A \textit{UnaryFunctor} is a function object with two template arguments \verb+LEFT_OPERAND+,
 \verb+RIGHT_OPERAND+, and \verb+ENABLED+. Specializations of this type must provide a
 constant \verb+operator()+ with one parameter \verb+operand+ of type \verb+OPERAND+
@@ -100,10 +103,51 @@ the \textit{UnaryFunctor} represents.\\
 \noindent{}The default type of \verb+ENABLED+ is \verb+void+. Specializations of this type may use
 the \verb+ENABLED+ argument to perform \textit{SFINAE}.
 
-\subsubsection{\texttt{struct unary\_plus\_functor}}
+\section{\texttt{struct unary\_plus\_functor}}
 A \textit{UnaryFunctor} representing the unary expression \verb|+operand|.
 
-\subsubsection{\texttt{struct unary\_minus\_functor}}
+\section{\texttt{struct unary\_minus\_functor}}
 A \textit{UnaryFunctor} representing the unary expression \verb|-operand|.
+
+\section{\texttt{division\_by\_zero\_error}}
+An error (as specified in Primordial Machine's Errors library) indicating a division by zero.
+
+\section{\textit{concept Error}}
+\textit{\color{orange}This section needs to be moved in Primordial Machine's Error library.}
+\noindent\textit{\color{orange}[[}\\
+An \textit{Error} type is a \texttt{error} or derived type.\\
+\noindent\textit{\color{orange}]]}
+
+\section{\textit{concept Exception}}
+\textit{\color{orange}This section needs to be moved in Primordial Machine's Error library.}
+\noindent\textit{\color{orange}[[}\\
+An \textit{Exception} type is a \texttt{exception} or derived type.
+Such an object must retain the properties of being
+\begin{enumerate}
+  \item noexcept copy/move constructible and
+  \item noexcept copy/move assignable.
+\end{enumerate}
+\noindent\textit{\color{orange}]]}
+
+\section{\texttt{negative\_overflow\_error}}
+An \textit{Error} type (as specified in Primordial Machine's Errors library) indicating a negative overflow.
+It raises its corresponding \texttt{negative\_overflow\_exception}.
+The term negative overflow refers to the situation in which an arithmetic value is non-positive and
+too big (in terms of its magnitude) to be represented. Its constructor takes a single argument which
+is a \texttt{error\_position} value.
+
+\section{\texttt{positive\_overflow\_error}}
+An \textit{Error} type (as specified in Primordial Machine's Errors library) indicating a positive overflow.
+It raises its corresponding \texttt{negative\_overflow\_exception}.
+The term positive overflow refers to the situation in which an arithmetic value is non-negative and
+too big (in terms of its magnitude) to be represented. Its constructor takes a single argument which
+is a \texttt{error\_position} value.
+
+\section{\texttt{underflow\_error}}
+An \textit{Error} type (as specified in Primordial Machine's Errors library) indicating an underflow.
+It raises its corresponding \texttt{underflow\_exception}.
+The term underflow refers to the situation in which an arithmetic value is too small (in terms of
+its magnitude) to be represented. Its constructor takes a single argument which
+is a \texttt{error\_position} value.
 
 \end{document}
