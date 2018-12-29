@@ -25,9 +25,20 @@
 
 #pragma once
 
+#include <type_traits>
+
 namespace primordialmachine {
 
 template<typename OPERAND, typename ENABLED = void>
 struct unary_plus_functor;
+
+// Default implementation for floating point types.
+template<typename OPERAND>
+struct unary_plus_functor<OPERAND,
+                          std::enable_if_t<std::is_floating_point_v<OPERAND>>>
+{
+  using operand_type = OPERAND;
+  constexpr auto operator()(operand_type x) const { return +x; }
+}; // struct unary_plus_functor
 
 } // namespace primordialmachine

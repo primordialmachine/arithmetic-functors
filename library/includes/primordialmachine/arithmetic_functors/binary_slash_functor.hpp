@@ -25,9 +25,26 @@
 
 #pragma once
 
+#include <type_traits>
+
 namespace primordialmachine {
 
 template<typename LEFT_OPERAND, typename RIGHT_OPERAND, typename ENABLED = void>
 struct binary_slash_functor;
+
+template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+struct binary_slash_functor<
+  LEFT_OPERAND,
+  RIGHT_OPERAND,
+  std::enable_if_t<std::is_floating_point_v<LEFT_OPERAND> &&
+                   std::is_floating_point_v<RIGHT_OPERAND>>>
+{
+  using left_operand_type = LEFT_OPERAND;
+  using right_operand_type = RIGHT_OPERAND;
+  constexpr auto operator()(left_operand_type x, right_operand_type y) const
+  {
+    return x / y;
+  }
+}; // struct binary_slash_functor
 
 } // namespace primordialmachine

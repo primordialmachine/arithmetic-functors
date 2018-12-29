@@ -4,7 +4,7 @@
 
 \SetOrganization{Primordial Machine's}
 \SetLibraryName{Arithmetic Library}
-\SetLibraryVersion{v1.3}
+\SetLibraryVersion{v1.4}
 \SetLibraryRepository{https://github.com/primordialmachine/arithmetic}
 \SetAuthor{Michael Heilmann}
 \SetEmail{michaelheilmann@primordialmachine.com}
@@ -82,15 +82,19 @@ the \verb+ENABLED+ argument to perform \textit{SFINAE}.
 
 \section{\texttt{struct binary\_plus\_functor}}
 A \textit{BinaryFunctor} representing the binary operation \verb|left_operand + right_operand|.
+This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types.
 
 \section{\texttt{struct binary\_minus\_functor}}
 A \textit{BinaryFunctor} representing the binary expression \verb|left_operand - right_operand|.
+This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types.
 
 \section{\texttt{struct binary\_star\_functor}}
 A \textit{BinaryFunctor} representing the binary expression \verb|left_operand * right_operand|.
+This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types.
 
 \section{\texttt{struct binary\_slash\_functor}}
 A \textit{BinaryFunctor} representing the binary expression \verb|left_operand / right_operand|.
+This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types.
 
 \section{\textit{concept UnaryFunctor}}
 A \textit{UnaryFunctor} is a function object with two template arguments \verb+LEFT_OPERAND+,
@@ -105,9 +109,11 @@ the \verb+ENABLED+ argument to perform \textit{SFINAE}.
 
 \section{\texttt{struct unary\_plus\_functor}}
 A \textit{UnaryFunctor} representing the unary expression \verb|+operand|.
+Ths library provides specializations for \texttt{OPERAND} being a floating point type.
 
 \section{\texttt{struct unary\_minus\_functor}}
 A \textit{UnaryFunctor} representing the unary expression \verb|-operand|.
+This library provides specializations for \texttt{OPERAND} being a floating point type.
 
 \section{\texttt{division\_by\_zero\_error}}
 An error (as specified in Primordial Machine's Errors library) indicating a division by zero.
