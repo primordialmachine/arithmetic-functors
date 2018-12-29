@@ -1,6 +1,7 @@
-\documentclass[oneside]{report}
+\documentclass[oneside]{book}
 
 \input{common}
+
 
 \SetOrganization{Primordial Machine's}
 \SetLibraryName{Arithmetic Library}
@@ -8,11 +9,23 @@
 \SetLibraryRepository{https://github.com/primordialmachine/arithmetic}
 \SetAuthor{Michael Heilmann}
 \SetEmail{michaelheilmann@primordialmachine.com}
+\SetDocumentType{User Manual}
 
 \begin{document}
+
+\frontmatter
+
+\begin{titlepage}
 \maketitle
+\end{titlepage}
+
 \tableofcontents
-\chapter*{Synopsis}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\pagenumbering{gobble}
+
+\mainmatter
+
+\chapter{Synopsis}
 C++ 17 library providing arithmetic functors and arithmetic errors and exceptions.
 The library is made available publicly on
 \href{\GetLibraryRepository}{Github}
