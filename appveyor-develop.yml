@@ -46,7 +46,7 @@ install:
   - IF EXIST "%MIKTEX_INSTALL_PATH%" (ECHO "using cached MikTex")
   - IF NOT EXIST "%MIKTEX_INSTALL_PATH%" (7z x "%MIKTEX_FILENAME%" -o"%MIKTEX_INSTALL_PATH%" > nul)
   - set "PATH=%PATH%;%MIKTEX_INSTALL_PATH%\texmfs\install\miktex\bin"
-  - initexmf --set-config-value "[MPM]AutoInstall=1" 
+  - initexmf --set-config-value "[MPM]AutoInstall=1"
 
 before_build:
   - nuget restore         # Restore NuGet packages.
