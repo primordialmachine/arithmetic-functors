@@ -4,11 +4,21 @@
 
 
 \SetOrganization{Primordial Machine's}
-\SetLibraryName{Arithmetic Library}
-\SetLibraryVersion{v1.5}
-\SetLibraryRepository{https://github.com/primordialmachine/arithmetic}
+\SetLibraryName{Arithmetic Functors Library}
+
+\SetLibraryIncludeFileName{include.hpp}
+\SetLibraryIncludesDirectoryPath{primordialmachine/arithmetic-functors/\newline\$(PlatformTarget.toLower())/\$(Configuration.toLower())/includes}
+
+\SetLibraryIncludeDirectiveFilePath{primordialmachine/arithmetic\_functors/include.hpp}
+
+\SetLibraryStaticLibrariesDirectoryPath{primordialmachine/arithmetic-functors/\newline\$(PlatformTarget.toLower())/\$(Configuration.toLower())/libraries}
+\SetLibraryStaticLibraryFileName{arithmetic-functors.lib}
+
+\SetLibraryVersion{v1.6}
+\SetLibraryRepository{https://github.com/primordialmachine/arithmetic-functors}
 \SetAuthor{Michael Heilmann}
 \SetEmail{michaelheilmann@primordialmachine.com}
+
 \SetDocumentType{User Manual}
 
 \begin{document}
@@ -42,38 +52,7 @@ This library depends on the \href{https://github.com/primordialmachine/errors}{P
 \textit{\color{orange}This library does not provide any examples yet.}
 %Examples are located in the \href{\GetLibraryRepository/blob/master/examples}{examples} directory.
 
-\chapter{Building under Visual Studio 2017}
-\begin{enumerate}
-\item Open the solution \texttt{solution.sln} in Microsoft Visual Studio 2017.
-\item Batch build everything.
-\item The folder \texttt{packages} contains the distribution of the library i.e. include files and the
-      static libraries for
-  \begin{enumerate}
-    \item the platforms \texttt{Win32} and \texttt{x64} and
-    \item configurations \texttt{Release} and \texttt{Debug}.
-  \end{enumerate}
-\item Copy the contents of the \verb+packages+ folder into a directory. Let
-      \verb+[library home]+ be a placeholder denoting the path by which that folder
-      can be referenced from your project.
-\item Add
-  \begin{enumerate}
-    \item the include path
-\begin{verbatim}
-[library home]/primordialmachine/arithmetic-functors/
-$(PlatformTarget.toLower())/$(Configuration.toLower())/includes
-\end{verbatim}
-	and
-    \item the library path
-\begin{verbatim}
-[library home]/primordialmachine/arithmetic-functors/
-$(PlatformTarget.toLower())/$(Configuration.toLower())/libraries
-\end{verbatim}
-    to your project.
-\end{enumerate}
-\item Link your project with the library \verb+arithmetic-functors.lib+.
-\item Add the include directive \verb+#include "primordialmachine/arithmetic_functors/include.hpp"+ where appropriate.
-\item You can now use the functionality provided by the library.
-\end{enumerate}
+\include{building_visual_studio_2017}
 
 \chapter{Library Interface Documentation}
 
@@ -81,52 +60,44 @@ $(PlatformTarget.toLower())/$(Configuration.toLower())/libraries
 The namespace this library is adding its declarations/definitions to.
 The added namespace elements are documented below.
 
-\section{\textit{concept BinaryFunctor}}
-A \textit{BinaryFunctor} is a function object with three template arguments \verb+LEFT_OPERAND+,
-\verb+RIGHT_OPERAND+, and \verb+ENABLED+. Specializations of this type must provide a
-constant \verb+operator()+ with two parameters \verb+left_operand+ of type \verb+LEFT_OPERAND+
-(or a cv-qualified variant of that) and \verb+right_operand+ of type \verb+RIGHT_OPERAND+
-(or a cv-qualified variant of that). The return value of that operand shall represent the
-result of the operation \verb+left_operand OP right_operand+ where OP is the binary operation
-the \textit{BinaryFunctor} represents.\\
-
-\noindent{}The default type of \verb+ENABLED+ is \verb+void+. Specializations of this type may use
-the \verb+ENABLED+ argument to perform \textit{SFINAE}.
+\input{binary_functor}
+\input{unary_functor}
 
 \section{\texttt{struct binary\_plus\_functor}}
-A \textit{BinaryFunctor} representing the binary operation \verb|left_operand + right_operand|.
-This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types.
+A \textit{BinaryFunctor} representing the binary operation $\textit{left\_operand} + \textit{right\_operand}$.\newline
+
+\noindent{}This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types
+and $\circ$ being the C++ built-in binary plus operator \texttt{+}.
 
 \section{\texttt{struct binary\_minus\_functor}}
-A \textit{BinaryFunctor} representing the binary expression \verb|left_operand - right_operand|.
-This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types.
+A \textit{BinaryFunctor} representing the binary expression $\textit{left\_operand} - \textit{right\_operand}$.\newline
+
+\noindent{}This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types
+and $\circ$ being The C++ built-in binary minus operator \texttt{*}.
 
 \section{\texttt{struct binary\_star\_functor}}
-A \textit{BinaryFunctor} representing the binary expression \verb|left_operand * right_operand|.
-This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types.
+A \textit{BinaryFunctor} representing the binary expression $\textit{left\_operand} \cdot \textit{right\_operand}$.\newline
+
+\noindent{}This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types
+and $\circ$ being the C++ built-in binary star operator \texttt{*}.
 
 \section{\texttt{struct binary\_slash\_functor}}
-A \textit{BinaryFunctor} representing the binary expression \verb|left_operand / right_operand|.
-This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types.
+A \textit{BinaryFunctor} representing the binary expression $\textit{left\_operand} / \textit{right\_operand}$.\newline
 
-\section{\textit{concept UnaryFunctor}}
-A \textit{UnaryFunctor} is a function object with two template arguments \verb+LEFT_OPERAND+,
-\verb+RIGHT_OPERAND+, and \verb+ENABLED+. Specializations of this type must provide a
-constant \verb+operator()+ with one parameter \verb+operand+ of type \verb+OPERAND+
-(or a cv-qualified variant of that). The return value of that operand shall represent the
-result of the operation \verb+OP operand+ where OP is the unary operation
-the \textit{UnaryFunctor} represents.\\
-
-\noindent{}The default type of \verb+ENABLED+ is \verb+void+. Specializations of this type may use
-the \verb+ENABLED+ argument to perform \textit{SFINAE}.
+\noindent{}This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types
+and $\circ$  being the C++ built-in binary slash operator \texttt{/}.
 
 \section{\texttt{struct unary\_plus\_functor}}
-A \textit{UnaryFunctor} representing the unary expression \verb|+operand|.
-Ths library provides specializations for \texttt{OPERAND} being a floating point type.
+A \textit{UnaryFunctor} representing the unary expression $+\textit{operand}$.\newline
+
+\noindent{}This library provides specializations for \texttt{OPERAND} being a floating point type
+and $\circ$ being the C++ built-in unary plus operator \texttt{+}.
 
 \section{\texttt{struct unary\_minus\_functor}}
-A \textit{UnaryFunctor} representing the unary expression \verb|-operand|.
-This library provides specializations for \texttt{OPERAND} being a floating point type.
+A \textit{UnaryFunctor} representing the unary expression $-\textit{operand}$.\newline
+
+\noindent{}This library provides specializations for \texttt{OPERAND} being a floating point types
+and $\circ$ being the C++ built-in unary minus operator \texttt{-}.
 
 \section{\texttt{division\_by\_zero\_error}}
 An error (as specified in Primordial Machine's Errors library) indicating a division by zero.
