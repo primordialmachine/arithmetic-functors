@@ -5,7 +5,7 @@
 #   Example: 'primordialmachine'.
 # PACKAGE_NAME
 #   The name of the published package.
-#   Example: 'vectors'.
+#   Example: 'arithmetic-functors'.
 # CONFIGURATION:
 #   The configuration.
 #   Example: 'release'.
@@ -14,10 +14,10 @@
 #   Example: 'x64'.
 # ARTIFACT_FILENAME
 #   The file name of the artifact.
-#   Example: 'primordialmachine-vectors-release-x64.zip'.
+#   Example: 'primordialmachine-arithmetic-functors-release-x64.zip'.
 # ARTIFACT_NAME
 #   The name of the artifact.
-#   Example: 'primordialmachine-vectors-release-x64'.
+#   Example: 'primordialmachine-arithmetic-functors-release-x64'.
 #
 # GOOGLETESTADAPTER_FILENAME
 #   The filename of the archive of GoogleTestAdapter.
@@ -85,11 +85,6 @@ install:
 
 before_build:
   - nuget restore         # Restore NuGet packages.
-  - ps: |
-      Write-Host "configuration:     $($env:configuration.tolower())"
-      Write-Host "platform:          $($env:platform.tolower())"
-      Write-Host "organization name: $($env:ORGANIZATION_NAME.tolower())"
-      Write-Host "package name:      $($env:PACKAGE_NAME.tolower())"
   - ps: |
       $env:ARTIFACT_NAME="$($env:ORGANIZATION_NAME.tolower())-$($env:PACKAGE_NAME.tolower())-$($env:configuration.tolower())-$($env:platform.tolower())"
       $env:ARTIFACT_FILENAME="$($env:ARTIFACT_NAME).zip"
