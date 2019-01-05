@@ -60,45 +60,67 @@ This library depends on the \href{https://github.com/primordialmachine/errors}{P
 The namespace this library is adding its declarations/definitions to.
 The added namespace elements are documented below.
 
-\input{binary_functor}
-\input{unary_functor}
+\input{functors}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\texttt{struct binary\_plus\_functor}}
-A \textit{BinaryFunctor} representing the binary operation $\textit{left\_operand} + \textit{right\_operand}$.\newline
+A \textit{BinaryFunctorBase} representing the binary operation $\textit{left\_operand} + \textit{right\_operand}$.\newline
 
-\noindent{}This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types
-and $\circ$ being the C++ built-in binary plus operator \texttt{+}.
+\noindent{}This library provides \textit{BinaryFunctor}       specializations for
+\texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being     floating point types
+which compute  the sum    of  \texttt{left\_operand} and \texttt{right\_operand}.
+\texttt{result\_type} is \texttt{std::common\_type\_t  \textlangle LEFT\_OPERAND,
+RIGHT\_OPERAND\textrangle}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\texttt{struct binary\_minus\_functor}}
-A \textit{BinaryFunctor} representing the binary expression $\textit{left\_operand} - \textit{right\_operand}$.\newline
+A \textit{BinaryFunctorBase} representing the binary expression $\textit{left\_operand} - \textit{right\_operand}$.\newline
 
-\noindent{}This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types
-and $\circ$ being The C++ built-in binary minus operator \texttt{*}.
+\noindent{}This library provides \textit{BinaryFunctor}         specializations for
+\texttt{LEFT\_OPERAND} and   \texttt{RIGHT\_OPERAND} being     floating point types
+which compute the difference of \texttt{left\_operand} and \texttt{right\_operand}.
+\texttt{result\_type} is \texttt{std::common\_type\_t  \textlangle   LEFT\_OPERAND,
+RIGHT\_OPERAND\textrangle}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\texttt{struct binary\_star\_functor}}
-A \textit{BinaryFunctor} representing the binary expression $\textit{left\_operand} \cdot \textit{right\_operand}$.\newline
+A \textit{BinaryFunctorBase} representing the binary expression $\textit{left\_operand} \cdot \textit{right\_operand}$.\newline
 
-\noindent{}This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types
-and $\circ$ being the C++ built-in binary star operator \texttt{*}.
+\noindent{}This library provides \textit{BinaryFunctor}         specializations for
+\texttt{LEFT\_OPERAND} and   \texttt{RIGHT\_OPERAND} being     floating point types
+which compute the difference of \texttt{left\_operand} and \texttt{right\_operand}.
+\texttt{result\_type} is \texttt{std::common\_type\_t  \textlangle   LEFT\_OPERAND,
+RIGHT\_OPERAND\textrangle}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\texttt{struct binary\_slash\_functor}}
-A \textit{BinaryFunctor} representing the binary expression $\textit{left\_operand} / \textit{right\_operand}$.\newline
+A \textit{BinaryFunctorBase} representing the binary expression $\textit{left\_operand} / \textit{right\_operand}$.\newline
 
-\noindent{}This library provides specializations for \texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being floating point types
-and $\circ$  being the C++ built-in binary slash operator \texttt{/}.
+\noindent{}This library provides \textit{BinaryFunctor}         specializations for
+\texttt{LEFT\_OPERAND} and   \texttt{RIGHT\_OPERAND} being     floating point types
+which compute the difference of \texttt{left\_operand} and \texttt{right\_operand}.
+\texttt{result\_type} is \texttt{std::common\_type\_t  \textlangle   LEFT\_OPERAND,
+RIGHT\_OPERAND\textrangle}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\texttt{struct unary\_plus\_functor}}
-A \textit{UnaryFunctor} representing the unary expression $+\textit{operand}$.\newline
+A \textit{UnaryFunctorBase} representing the unary expression $+\textit{operand}$.\newline
 
-\noindent{}This library provides specializations for \texttt{OPERAND} being a floating point type
-and $\circ$ being the C++ built-in unary plus operator \texttt{+}.
+\noindent{}This library provides \textit{UnaryFunctor}            specializations for
+\texttt{OPERAND} being a floating point type which compute the arithmetic affirmation
+of \texttt{operand}. \texttt{result\_type} is \texttt{std::common\_type\_t\textlangle
+OPERAND\textrangle}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\texttt{struct unary\_minus\_functor}}
-A \textit{UnaryFunctor} representing the unary expression $-\textit{operand}$.\newline
+A \textit{UnaryFunctorBase} representing the unary expression $-\textit{operand}$.\newline
 
-\noindent{}This library provides specializations for \texttt{OPERAND} being a floating point types
-and $\circ$ being the C++ built-in unary minus operator \texttt{-}.
+\noindent{}This library provides \textit{UnaryFunctor}            specializations for
+\texttt{OPERAND} being a floating point type which compute the arithmetic    negation
+of \texttt{operand}. \texttt{result\_type} is \texttt{std::common\_type\_t\textlangle
+OPERAND\textrangle}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\texttt{division\_by\_zero\_error}}
 An error (as specified in Primordial Machine's Errors library) indicating a division by zero.
 
