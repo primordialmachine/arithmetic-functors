@@ -41,7 +41,8 @@ struct binary_slash_functor<
 {
   using left_operand_type = LEFT_OPERAND;
   using right_operand_type = RIGHT_OPERAND;
-  auto operator()(left_operand_type x, right_operand_type y) const
+  using result_type = std::common_type_t<left_operand_type, right_operand_type>;
+  result_type operator()(left_operand_type x, right_operand_type y) const
     noexcept(noexcept(x / y))
   {
     return x / y;

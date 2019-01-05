@@ -38,7 +38,8 @@ struct unary_minus_functor<OPERAND,
                            std::enable_if_t<std::is_floating_point_v<OPERAND>>>
 {
   using operand_type = OPERAND;
-  auto operator()(operand_type x) const noexcept(noexcept(-x)) { return -x; }
+  using result_type = OPERAND;
+  result_type operator()(operand_type x) const noexcept(noexcept(-x)) { return -x; }
 }; // struct unary_minus_functor
 
 } // namespace primordialmachine
