@@ -9,7 +9,7 @@ struct scalar_generator_functor;
 
 template<typename SCALAR>
 struct scalar_generator_functor<SCALAR,
-                               std::enable_if_t<std::is_arithmetic_v<SCALAR>>>
+                               std::enable_if_t<std::is_floating_point_v<SCALAR>>>
 {
   using scalar_type = SCALAR;
 
