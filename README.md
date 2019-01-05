@@ -1,5 +1,5 @@
 # Primordial Machine's Arithmetic Functors Library
-C++ 17 library providing arithmetic functors. 
+C++ 17 library providing arithmetic functors.
 The library is made available publicly on [GitHub](https://github.com/primordialmachine/arithmetic-functors) under the [MIT License](https://github.com/primordialmachine/arithmetic-functors/blob/master/LICENSE).
 
 ## Restrictions
