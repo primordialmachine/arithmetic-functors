@@ -38,6 +38,7 @@ public:
   using parent_type = error;
   using position_type = error_position;
   negative_overflow_error(position_type position);
+
 protected:
   negative_overflow_error* clone_implementation() const override;
   void raise_implementation() const override;

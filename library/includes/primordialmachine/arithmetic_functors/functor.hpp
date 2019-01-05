@@ -28,8 +28,7 @@
 namespace primordialmachine {
 
 struct functor
-{
-}; // struct functor
+{}; // struct functor
 
 template<typename TYPE>
 struct is_functor

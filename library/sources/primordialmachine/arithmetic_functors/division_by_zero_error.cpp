@@ -32,7 +32,8 @@ division_by_zero_error::division_by_zero_error(
   : parent_type("division by zero error", position)
 {}
 
-division_by_zero_error* division_by_zero_error::clone_implementation() const
+division_by_zero_error*
+division_by_zero_error::clone_implementation() const
 {
   return new division_by_zero_error(*this);
 }

@@ -12,6 +12,7 @@ struct scalar_generator_functor<SCALAR,
                                std::enable_if_t<std::is_arithmetic_v<SCALAR>>>
 {
   using scalar_type = SCALAR;
+
   scalar_type m_scalar;
 
   using result_type = SCALAR;

@@ -39,7 +39,10 @@ struct unary_minus_functor<OPERAND,
 {
   using operand_type = OPERAND;
   using result_type = OPERAND;
-  result_type operator()(operand_type x) const noexcept(noexcept(-x)) { return -x; }
+  result_type operator()(operand_type x) const noexcept(noexcept(-x))
+  {
+    return -x;
+  }
 }; // struct unary_minus_functor
 
 } // namespace primordialmachine

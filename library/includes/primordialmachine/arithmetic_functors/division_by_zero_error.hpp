@@ -29,7 +29,7 @@
 
 namespace primordialmachine {
 
- class division_by_zero_error;
+class division_by_zero_error;
 class division_by_zero_exception;
 
 class division_by_zero_error : public error
@@ -38,6 +38,7 @@ public:
   using parent_type = error;
   using position_type = error_position;
   division_by_zero_error(position_type position);
+
 protected:
   division_by_zero_error* clone_implementation() const override;
   void raise_implementation() const override;

@@ -32,10 +32,11 @@ namespace primordialmachine {
 class positive_overflow_error;
 class positive_overflow_exception;
 
-class positive_overflow_exception : public exception {
+class positive_overflow_exception : public exception
+{
 public:
   using parent_type = exception;
-   positive_overflow_exception(const positive_overflow_error& error);
+  positive_overflow_exception(const positive_overflow_error& error);
 }; // class positive_overflow_exception
 
 class positive_overflow_error : public error
@@ -44,6 +45,7 @@ public:
   using parent_type = error;
   using position_type = error_position;
   positive_overflow_error(position_type position);
+
 protected:
   positive_overflow_error* clone_implementation() const override;
   void raise_implementation() const override;
