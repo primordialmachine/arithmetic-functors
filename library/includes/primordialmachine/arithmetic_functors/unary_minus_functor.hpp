@@ -32,6 +32,21 @@ namespace primordialmachine {
 template<typename OPERAND, typename ENABLED = void>
 struct unary_minus_functor;
 
+template<typename OPERAND>
+auto
+unary_minus(const OPERAND& operand)
+  -> decltype(unary_minus_functor<OPERAND>()(operand))
+{
+  return unary_minus_functor<OPERAND>()(operand);
+}
+
+template<typename OPERAND>
+auto
+operator-(const OPERAND& operand) -> decltype(unary_minus(operand))
+{
+  return unary_minus(operand);
+}
+
 // Default implementation for floating point types.
 template<typename OPERAND>
 struct unary_minus_functor<OPERAND,

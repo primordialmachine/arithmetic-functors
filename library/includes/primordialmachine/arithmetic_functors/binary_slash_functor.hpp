@@ -33,6 +33,26 @@ template<typename LEFT_OPERAND, typename RIGHT_OPERAND, typename ENABLED = void>
 struct binary_slash_functor;
 
 template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+auto
+binary_slash(const LEFT_OPERAND& left_operand,
+             const RIGHT_OPERAND& right_operand)
+  -> decltype(
+    binary_slash_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
+                                                        right_operand))
+{
+  return binary_slash_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
+                                                             right_operand);
+}
+
+template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+auto
+operator/(const LEFT_OPERAND& left_operand, const RIGHT_OPERAND& right_operand)
+  -> decltype(binary_slash(left_operand, right_operand))
+{
+  return binary_slash(left_operand, right_operand);
+}
+
+template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
 struct binary_slash_functor<
   LEFT_OPERAND,
   RIGHT_OPERAND,

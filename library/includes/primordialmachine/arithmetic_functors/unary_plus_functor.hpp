@@ -32,6 +32,21 @@ namespace primordialmachine {
 template<typename OPERAND, typename ENABLED = void>
 struct unary_plus_functor;
 
+template<typename OPERAND>
+auto
+unary_plus(const OPERAND& operand)
+  -> decltype(unary_plus_functor<OPERAND>()(operand))
+{
+  return unary_plus_functor<OPERAND>()(operand);
+}
+
+template<typename OPERAND>
+auto
+operator+(const OPERAND& operand) -> decltype(unary_plus(operand))
+{
+  return unary_plus(operand);
+}
+
 // Default implementation for floating point types.
 template<typename OPERAND>
 struct unary_plus_functor<OPERAND,
@@ -39,7 +54,10 @@ struct unary_plus_functor<OPERAND,
 {
   using operand_type = OPERAND;
   using result_type = OPERAND;
-  result_type operator()(operand_type x) const noexcept(noexcept(+x)) { return +x; }
+  result_type operator()(operand_type x) const noexcept(noexcept(+x))
+  {
+    return +x;
+  }
 }; // struct unary_plus_functor
 
 } // namespace primordialmachine
