@@ -27,25 +27,69 @@
 #include "gtest/gtest.h"
 
 TEST(arithmetic_functors_test, binary_star_functor_test)
-{ /* Intentionally empty. */
+{
+  using namespace primordialmachine;
+    ASSERT_FLOAT_EQ(+6.f, binary_star(2.f, 3.f));
 }
 
 TEST(arithmetic_functors_test, binary_slash_functor_test)
-{ /* Intentionally empty. */
+{
+  using namespace primordialmachine;
+  ASSERT_FLOAT_EQ(+3.f, binary_slash(6.f, 2.f));
 }
 
 TEST(arithmetic_functors_test, binary_plus_functor_test)
-{ /* Intentionally empty. */
+{
+  using namespace primordialmachine;
+  ASSERT_FLOAT_EQ(+3.f, binary_plus(1.f, 2.f));
 }
 
 TEST(arithmetic_functors_test, binary_minus_functor_test)
-{ /* Intentionally empty. */
+{
+  using namespace primordialmachine;
+  ASSERT_FLOAT_EQ(-1.f, binary_minus(1.f, 2.f));
 }
 
 TEST(arithmetic_functors_test, unary_plus_functor_test)
-{ /* Intentionally empty. */
+{
+  using namespace primordialmachine;
+  ASSERT_FLOAT_EQ(+1.f, unary_plus(1.f));
 }
 
 TEST(arithmetic_functors_test, unary_minus_functor_test)
-{ /* Intentionally empty. */
+{
+  using namespace primordialmachine;
+  ASSERT_FLOAT_EQ(-1.f, unary_minus(1.f));
+}
+
+TEST(arithmetic_functors_test, plus_assignment_functor_test)
+{
+  using namespace primordialmachine;
+  float x = 1.f;
+  plus_assignment(x, 2.0f);
+  ASSERT_FLOAT_EQ(+3.f, x);
+}
+
+TEST(arithmetic_functors_test, minus_assignment_functor_test)
+{
+  using namespace primordialmachine;
+  float x = 1.f;
+  minus_assignment(x, 2.0f);
+  ASSERT_FLOAT_EQ(-1.f, x);
+}
+
+TEST(arithmetic_functors_test, star_assignment_functor_test)
+{
+  using namespace primordialmachine;
+  float x = 2.f;
+  star_assignment(x, 3.0f);
+  ASSERT_FLOAT_EQ(6.f, x);
+}
+
+TEST(arithmetic_functors_test, slash_assignment_functor_test)
+{
+  using namespace primordialmachine;
+  float x = 6.f;
+  slash_assignment(x, 2.0f);
+  ASSERT_FLOAT_EQ(3.f, x);
 }

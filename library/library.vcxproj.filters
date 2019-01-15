@@ -62,6 +62,18 @@
     <ClInclude Include="includes\primordialmachine\arithmetic_functors\underflow_error.hpp">
       <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\minus_assignment_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\plus_assignment_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\slash_assignment_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\star_assignment_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="package.props" />

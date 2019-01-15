@@ -1,0 +1,27 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\texttt{slash\_assignment\_functor} (struct)}
+A \textit{AssignmentFunctorBase} representing the binary operation $\textit{left\_operand} += \textit{right\_operand}$.\newline
+
+\noindent{}This library provides \textit{AssignmentFunctorBase} specializations for
+\texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being the same    floating point
+type which compute  the sum of  \texttt{left\_operand} and \texttt{right\_operand}
+and assigns the result to \texttt{left\_operand}.
+\texttt{result\_type} is \texttt{left\_operand}.
+
+\subsection{\texttt{slash\_assignment} (function)}
+This library provides a function to invoke the \texttt{slash\_assignment\_functor}.
+A possible implementation is given by\newline
+\texttt{
+template\textlangle typename A, typename B\textrangle\newline
+auto slash\_assignment(A\& a, const B\& b) -> decltype(slash\_assignment\_functor\textlangle A, B\textrangle()(a, b))\newline
+\{ return slash\_assignment\_functor\textlangle A, B\textrangle()(a, b); \}
+}
+
+\subsection{\texttt{operator+=} (compound operator)}
+This library provides a compound slash operator overload to invoke the \texttt{slash\_assignment\_functor}.
+A possible implementation is given by\newline
+\texttt{
+template\textlangle typename A, typename B\textrangle\newline
+auto operator/=(A\& a, const B\& b) -> decltype(slash\_assignment(a, b))\newline
+\{ return slash\_assignment(a, b); \}
+}

@@ -38,8 +38,8 @@
 \SetLibraryStaticLibrariesDirectoryPath{primordialmachine/arithmetic-functors/\newline\$(PlatformTarget.toLower())/\$(Configuration.toLower())/libraries}
 \SetLibraryStaticLibraryFileName{arithmetic-functors.lib}
 
-\SetLibraryVersion{v1.7}
-\SetLibraryRepository{https://github.com/primordialmachine/arithmetic-functors}
+\SetLibraryVersion{v1.8}
+\SetLibraryRepository{https://github.com/primordialmachine/math-arithmetic-functors}
 \SetAuthor{Michael Heilmann}
 \SetEmail{michaelheilmann@primordialmachine.com}
 
@@ -87,7 +87,7 @@ The added namespace elements are documented below.
 \input{functors}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texttt{struct binary\_plus\_functor}}
+\section{\texttt{binary\_plus\_functor} (struct)}
 A \textit{BinaryFunctorBase} representing the binary operation $\textit{left\_operand} + \textit{right\_operand}$.\newline
 
 \noindent{}This library provides \textit{BinaryFunctor}       specializations for
@@ -115,7 +115,7 @@ auto operator+(const A\& a, const B\& b) -> decltype(binary\_plus(a, b))\newline
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texttt{binary\_minus\_functor} (functor)}
+\section{\texttt{binary\_minus\_functor} (struct)}
 A \textit{BinaryFunctorBase} representing the binary expression $\textit{left\_operand} - \textit{right\_operand}$.\newline
 
 \noindent{}This library provides \textit{BinaryFunctor}         specializations for
@@ -143,7 +143,7 @@ auto operator-(const A\& a, const B\& b) -> decltype(binary\_minus(a, b))\newlin
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texttt{struct binary\_star\_functor}}
+\section{\texttt{binary\_star\_functor} (struct)}
 A \textit{BinaryFunctorBase} representing the binary expression $\textit{left\_operand} \cdot \textit{right\_operand}$.\newline
 
 \noindent{}This library provides \textit{BinaryFunctor}         specializations for
@@ -171,7 +171,7 @@ auto operator*(const A\& a, const B\& b) -> decltype(binary\_star(a, b))\newline
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texttt{struct binary\_slash\_functor}}
+\section{\texttt{binary\_slash\_functor} (struct)}
 A \textit{BinaryFunctorBase} representing the binary expression $\textit{left\_operand} / \textit{right\_operand}$.\newline
 
 \noindent{}This library provides \textit{BinaryFunctor}         specializations for
@@ -199,7 +199,7 @@ auto operator/(const A\& a, const B\& b) -> decltype(binary\_slash(a, b))\newlin
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texttt{struct unary\_plus\_functor}}
+\section{\texttt{unary\_plus\_functor} (struct)}
 A \textit{UnaryFunctorBase} representing the unary expression $+\textit{operand}$.\newline
 
 \noindent{}This library provides \textit{UnaryFunctor}            specializations for
@@ -226,7 +226,7 @@ auto operator+(const A\& a) -> decltype(unary\_plus(a))\newline
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texttt{struct unary\_minus\_functor}}
+\section{\texttt{unary\_minus\_functor} (struct)}
 A \textit{UnaryFunctorBase} representing the unary expression $-\textit{operand}$.\newline
 
 \noindent{}This library provides \textit{UnaryFunctor}            specializations for
@@ -252,17 +252,21 @@ auto operator-(const A\& a) -> decltype(unary\_minus(a))\newline
 \{ return unary\_minus(a); \}
 }
 
+\input{plus_assignment_functor}
+\input{minus_assignment_functor}
+\input{star_assignment_functor}
+\input{slash_assignment_functor}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texttt{division\_by\_zero\_error}}
+\section{\texttt{division\_by\_zero\_error} (struct)}
 An error (as specified in Primordial Machine's Errors library) indicating a division by zero.
 
-\section{\textit{concept Error}}
+\section{\textit{Error} (concept)}
 \textit{\color{orange}This section needs to be moved in Primordial Machine's Error library.}
 \noindent\textit{\color{orange}[[}\\
 An \textit{Error} type is a \texttt{error} or derived type.\\
 \noindent\textit{\color{orange}]]}
 
-\section{\textit{concept Exception}}
+\section{\textit{Exception} (concept)}
 \textit{\color{orange}This section needs to be moved in Primordial Machine's Error library.}
 \noindent\textit{\color{orange}[[}\\
 An \textit{Exception} type is a \texttt{exception} or derived type.
@@ -273,21 +277,21 @@ Such an object must retain the properties of being
 \end{enumerate}
 \noindent\textit{\color{orange}]]}
 
-\section{\texttt{negative\_overflow\_error}}
+\section{\texttt{negative\_overflow\_error} (struct)}
 An \textit{Error} type (as specified in Primordial Machine's Errors library) indicating a negative overflow.
 It raises its corresponding \texttt{negative\_overflow\_exception}.
 The term negative overflow refers to the situation in which an arithmetic value is non-positive and
 too big (in terms of its magnitude) to be represented. Its constructor takes a single argument which
 is a \texttt{error\_position} value.
 
-\section{\texttt{positive\_overflow\_error}}
+\section{\texttt{positive\_overflow\_error} (struct)}
 An \textit{Error} type (as specified in Primordial Machine's Errors library) indicating a positive overflow.
 It raises its corresponding \texttt{negative\_overflow\_exception}.
 The term positive overflow refers to the situation in which an arithmetic value is non-negative and
 too big (in terms of its magnitude) to be represented. Its constructor takes a single argument which
 is a \texttt{error\_position} value.
 
-\section{\texttt{underflow\_error}}
+\section{\texttt{underflow\_error} (struct)}
 An \textit{Error} type (as specified in Primordial Machine's Errors library) indicating an underflow.
 It raises its corresponding \texttt{underflow\_exception}.
 The term underflow refers to the situation in which an arithmetic value is too small (in terms of
