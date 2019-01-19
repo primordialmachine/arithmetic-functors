@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// Primordial Machine's Arithmetic Functors Library
+// Primordial Machine's Functors Library
 // Copyright (C) 2017-2019 Michael Heilmann
 //
 // This software is provided 'as-is', without any express or implied warranty.
@@ -25,39 +25,7 @@
 
 #pragma once
 
-#include <type_traits>
-
-namespace primordialmachine {
-
-template<typename OPERAND, typename ENABLED = void>
-struct unary_plus_functor;
-
-template<typename OPERAND>
-auto
-unary_plus(const OPERAND& operand)
-  -> decltype(unary_plus_functor<OPERAND>()(operand))
-{
-  return unary_plus_functor<OPERAND>()(operand);
-}
-
-template<typename OPERAND>
-auto
-operator+(const OPERAND& operand) -> decltype(unary_plus(operand))
-{
-  return unary_plus(operand);
-}
-
-// Default implementation for floating point types.
-template<typename OPERAND>
-struct unary_plus_functor<OPERAND,
-                          enable_if_t<is_floating_point_v<OPERAND>>>
-{
-  using operand_type = OPERAND;
-  using result_type = OPERAND;
-  result_type operator()(operand_type x) const noexcept(noexcept(+x))
-  {
-    return +x;
-  }
-}; // struct unary_plus_functor
-
-} // namespace primordialmachine
+#include "primordialmachine/functors/common_type.hpp"
+#include "primordialmachine/functors/enable_if.hpp"
+#include "primordialmachine/functors/is_floating_point.hpp"
+#include "primordialmachine/functors/is_same.hpp"

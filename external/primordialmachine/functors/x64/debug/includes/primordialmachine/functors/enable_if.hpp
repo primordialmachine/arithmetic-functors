@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// Primordial Machine's Arithmetic Functors Library
-// Copyright (C) 2017-2019 Michael Heilmann
+// Primordial Machine's Functors Library
+// Copyright (C) 2019 Michael Heilmann
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the
@@ -25,18 +25,14 @@
 
 #pragma once
 
+#include <type_traits>
+
 namespace primordialmachine {
 
-struct functor
-{}; // struct functor
+template<bool B, typename T = void>
+using enable_if = std::enable_if<B, T>;
 
-template<typename TYPE>
-struct is_functor
-{
-  static constexpr bool value = std::is_base_of<functor, TYPE>::value;
-}; // struct is_functor
-
-template<typename TYPE>
-inline bool constexpr is_functor_v = is_functor<TYPE>::value;
+template<bool B, typename T = void>
+using enable_if_t = std::enable_if_t<B, T>;
 
 } // namespace primordialmachine

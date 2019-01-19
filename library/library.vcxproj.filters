@@ -35,9 +35,6 @@
     <ClInclude Include="includes\primordialmachine\arithmetic_functors\elementwise_unary_functor.hpp">
       <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
-    <ClInclude Include="includes\primordialmachine\arithmetic_functors\functor.hpp">
-      <Filter>Headerdateien\arithmetic_functors</Filter>
-    </ClInclude>
     <ClInclude Include="includes\primordialmachine\arithmetic_functors\include.hpp">
       <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
@@ -72,6 +69,9 @@
       <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
     <ClInclude Include="includes\primordialmachine\arithmetic_functors\star_assignment_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\operations.hpp">
       <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
   </ItemGroup>
