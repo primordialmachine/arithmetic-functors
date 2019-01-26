@@ -17,7 +17,7 @@ auto slash\_assignment(A\& a, const B\& b) -> decltype(slash\_assignment\_functo
 \{ return slash\_assignment\_functor\textlangle A, B\textrangle()(a, b); \}
 }
 
-\subsection{\texttt{operator+=} (compound operator)}
+\subsection{\texttt{operator/=} (compound operator)}
 This library provides a compound slash operator overload to invoke the \texttt{slash\_assignment\_functor}.
 A possible implementation is given by\newline
 \texttt{

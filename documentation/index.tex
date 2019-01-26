@@ -39,7 +39,7 @@
 \SetLibraryStaticLibrariesDirectoryPath{primordialmachine/arithmetic-functors/\newline\$(PlatformTarget.toLower())/\$(Configuration.toLower())/libraries}
 \SetLibraryStaticLibraryFileName{arithmetic-functors.lib}
 
-\SetLibraryVersion{v1.9}
+\SetLibraryVersion{v2.0}
 \SetLibraryRepository{https://github.com/primordialmachine/math-arithmetic-functors}
 \SetAuthor{Michael Heilmann}
 \SetEmail{michaelheilmann@primordialmachine.com}
@@ -91,12 +91,6 @@ The added namespace elements are documented below.
 \section{\texttt{binary\_plus\_functor} (struct)}
 A \textit{BinaryFunctorBase} representing the binary operation $\textit{left\_operand} + \textit{right\_operand}$.\newline
 
-\noindent{}This library provides \textit{BinaryFunctor}       specializations for
-\texttt{LEFT\_OPERAND} and \texttt{RIGHT\_OPERAND} being     floating point types
-which compute  the sum    of  \texttt{left\_operand} and \texttt{right\_operand}.
-\texttt{result\_type} is \texttt{std::common\_type\_t  \textlangle LEFT\_OPERAND,
-RIGHT\_OPERAND\textrangle}.
-
 \subsection{\texttt{binary\_plus} (function)}
 This library provides a function to invoke the \texttt{binary\_plus\_functor}.
 A possible implementation is given by\newline
@@ -118,12 +112,6 @@ auto operator+(const A\& a, const B\& b) -> decltype(binary\_plus(a, b))\newline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\texttt{binary\_minus\_functor} (struct)}
 A \textit{BinaryFunctorBase} representing the binary expression $\textit{left\_operand} - \textit{right\_operand}$.\newline
-
-\noindent{}This library provides \textit{BinaryFunctor}         specializations for
-\texttt{LEFT\_OPERAND} and   \texttt{RIGHT\_OPERAND} being     floating point types
-which compute the difference of \texttt{left\_operand} and \texttt{right\_operand}.
-\texttt{result\_type} is \texttt{std::common\_type\_t  \textlangle   LEFT\_OPERAND,
-RIGHT\_OPERAND\textrangle}.
 
 \subsection{\texttt{binary\_minus} (function)}
 This library provides a function to invoke the \texttt{binary\_minus\_functor}.
@@ -147,12 +135,6 @@ auto operator-(const A\& a, const B\& b) -> decltype(binary\_minus(a, b))\newlin
 \section{\texttt{binary\_star\_functor} (struct)}
 A \textit{BinaryFunctorBase} representing the binary expression $\textit{left\_operand} \cdot \textit{right\_operand}$.\newline
 
-\noindent{}This library provides \textit{BinaryFunctor}         specializations for
-\texttt{LEFT\_OPERAND} and   \texttt{RIGHT\_OPERAND} being     floating point types
-which compute the difference of \texttt{left\_operand} and \texttt{right\_operand}.
-\texttt{result\_type} is \texttt{std::common\_type\_t  \textlangle   LEFT\_OPERAND,
-RIGHT\_OPERAND\textrangle}.
-
 \subsection{\texttt{binary\_star} (function)}
 This library provides a function to invoke the \texttt{binary\_star\_functor}.
 A possible implementation is given by\newline
@@ -174,12 +156,6 @@ auto operator*(const A\& a, const B\& b) -> decltype(binary\_star(a, b))\newline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\texttt{binary\_slash\_functor} (struct)}
 A \textit{BinaryFunctorBase} representing the binary expression $\textit{left\_operand} / \textit{right\_operand}$.\newline
-
-\noindent{}This library provides \textit{BinaryFunctor}         specializations for
-\texttt{LEFT\_OPERAND} and   \texttt{RIGHT\_OPERAND} being     floating point types
-which compute the difference of \texttt{left\_operand} and \texttt{right\_operand}.
-\texttt{result\_type} is \texttt{std::common\_type\_t  \textlangle   LEFT\_OPERAND,
-RIGHT\_OPERAND\textrangle}.
 
 \subsection{\texttt{binary\_slash} (function)}
 This library provides a function to invoke the \texttt{binary\_slash\_functor}.
@@ -203,11 +179,6 @@ auto operator/(const A\& a, const B\& b) -> decltype(binary\_slash(a, b))\newlin
 \section{\texttt{unary\_plus\_functor} (struct)}
 A \textit{UnaryFunctorBase} representing the unary expression $+\textit{operand}$.\newline
 
-\noindent{}This library provides \textit{UnaryFunctor}            specializations for
-\texttt{OPERAND} being a floating point type which compute the arithmetic affirmation
-of \texttt{operand}. \texttt{result\_type} is \texttt{std::common\_type\_t\textlangle
-OPERAND\textrangle}.
-
 \subsection{\texttt{unary\_plus} (function)}
 This library provides a function to invoke the \texttt{unary\_plus\_functor}.
 A possible implementation is given by\newline
@@ -229,11 +200,6 @@ auto operator+(const A\& a) -> decltype(unary\_plus(a))\newline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\texttt{unary\_minus\_functor} (struct)}
 A \textit{UnaryFunctorBase} representing the unary expression $-\textit{operand}$.\newline
-
-\noindent{}This library provides \textit{UnaryFunctor}            specializations for
-\texttt{OPERAND} being a floating point type which compute the arithmetic    negation
-of \texttt{operand}. \texttt{result\_type} is \texttt{std::common\_type\_t\textlangle
-OPERAND\textrangle}.
 
 \subsection{\texttt{unary\_minus} (function)}
 This library provides a function to invoke the \texttt{unary\_minus\_functor}.

@@ -17,7 +17,7 @@ auto star\_assignment(A\& a, const B\& b) -> decltype(star\_assignment\_functor\
 \{ return star\_assignment\_functor\textlangle A, B\textrangle()(a, b); \}
 }
 
-\subsection{\texttt{operator+=} (compound operator)}
+\subsection{\texttt{operator*=} (compound operator)}
 This library provides a compound star operator overload to invoke the \texttt{star\_assignment\_functor}.
 A possible implementation is given by\newline
 \texttt{
