@@ -23,37 +23,38 @@
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "primordialmachine/arithmetic_functors/include.hpp"
-#include "gtest/gtest.h"
+#pragma once
 
-TEST(arithmetic_functors_tests, binary_minus_functor_test)
-{ /*Intentionally empty.*/
+#include <type_traits>
+
+namespace primordialmachine {
+
+template<typename OPERAND, typename ENABLED = void>
+struct square_root_functor;
+
+template<typename OPERAND>
+auto
+square_root(const OPERAND& operand)
+  -> decltype(square_root_functor<OPERAND>()(operand))
+{
+  return square_root_functor<OPERAND>()(operand);
 }
 
-TEST(arithmetic_functors_tests, binary_plus_functor_test)
-{ /*Intentionally empty.*/
-}
+template<typename T, typename ENABLED = void>
+struct has_square_root_functor
+{
+  static constexpr bool value = false;
+}; // struct has_square_root_functor
 
-TEST(arithmetic_functors_tests, binary_star_functor_test)
-{ /*Intentionally empty.*/
-}
+template<typename A>
+constexpr bool has_square_root_functor_v =
+  has_square_root_functor<square_root_functor<A>>::value;
 
-TEST(arithmetic_functors_tests, plus_assignment_functor_test)
-{ /*Intentionally empty.*/
-}
+template<typename A>
+struct has_square_root_functor<square_root_functor<A>,
+                               decltype(typeid(square_root_functor<A>), void())>
+{
+  static constexpr bool value = true;
+}; // struct has_square_root_functor
 
-TEST(arithmetic_functors_tests, minus_assignment_functor_test)
-{ /*Intentionally empty.*/
-}
-
-TEST(arithmetic_functors_tests, slash_assignment_functor_test)
-{ /*Intentionally empty.*/
-}
-
-TEST(arithmetic_functors_tests, square_root_functor_test)
-{ /*Intentionally empty.*/
-}
-
-TEST(arithmetic_functors_tests, star_assignment_functor_test)
-{ /*Intentionally empty.*/
-}
+} // namespace primordialmachine

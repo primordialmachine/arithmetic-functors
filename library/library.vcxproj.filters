@@ -74,6 +74,9 @@
     <ClInclude Include="includes\primordialmachine\arithmetic_functors\operations.hpp">
       <Filter>Headerdateien\arithmetic_functors</Filter>
     </ClInclude>
+    <ClInclude Include="includes\primordialmachine\arithmetic_functors\square_root_functor.hpp">
+      <Filter>Headerdateien\arithmetic_functors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="package.props" />
