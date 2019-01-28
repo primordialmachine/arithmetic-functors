@@ -29,26 +29,22 @@
 
 namespace primordialmachine {
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND, typename ENABLED = void>
+template<typename A, typename B, typename ENABLED = void>
 struct star_assignment_functor;
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+template<typename A, typename B>
 auto
-star_assignment(LEFT_OPERAND& left_operand, const RIGHT_OPERAND& right_operand)
-  -> decltype(
-    star_assignment_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                           right_operand))
+star_assignment(A& a, const B& b)
+  -> decltype(star_assignment_functor<A, B>()(a, b))
 {
-  return star_assignment_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                                right_operand);
+  return star_assignment_functor<A, B>()(a, b);
 }
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+template<typename A, typename B>
 auto
-operator*=(LEFT_OPERAND& left_operand, const RIGHT_OPERAND& right_operand)
-  -> decltype(star_assignment(left_operand, right_operand))
+operator*=(A& a, const B& b) -> decltype(star_assignment(a, b))
 {
-  return star_assignment(left_operand, right_operand);
+  return star_assignment(a, b);
 }
 
 template<typename T, typename ENABLED = void>

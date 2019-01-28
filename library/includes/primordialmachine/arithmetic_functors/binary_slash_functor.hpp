@@ -29,27 +29,22 @@
 
 namespace primordialmachine {
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND, typename ENABLED = void>
+template<typename A, typename B, typename ENABLED = void>
 struct binary_slash_functor;
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+template<typename A, typename B>
 auto
-binary_slash(const LEFT_OPERAND& left_operand,
-             const RIGHT_OPERAND& right_operand)
-  -> decltype(
-    binary_slash_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                        right_operand))
+binary_slash(const A& a, const B& b)
+  -> decltype(binary_slash_functor<A, B>()(a, b))
 {
-  return binary_slash_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                             right_operand);
+  return binary_slash_functor<A, B>()(a, b);
 }
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+template<typename A, typename B>
 auto
-operator/(const LEFT_OPERAND& left_operand, const RIGHT_OPERAND& right_operand)
-  -> decltype(binary_slash(left_operand, right_operand))
+operator/(const A& a, const B& b) -> decltype(binary_slash(a, b))
 {
-  return binary_slash(left_operand, right_operand);
+  return binary_slash(a, b);
 }
 
 template<typename T, typename ENABLED = void>

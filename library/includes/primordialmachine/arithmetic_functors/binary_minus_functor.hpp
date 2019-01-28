@@ -29,27 +29,22 @@
 
 namespace primordialmachine {
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND, typename ENABLED = void>
+template<typename A, typename B, typename ENABLED = void>
 struct binary_minus_functor;
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+template<typename A, typename B>
 auto
-binary_minus(const LEFT_OPERAND& left_operand,
-             const RIGHT_OPERAND& right_operand)
-  -> decltype(
-    binary_minus_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                        right_operand))
+binary_minus(const A& a, const B& b)
+  -> decltype(binary_minus_functor<A, B>()(a, b))
 {
-  return binary_minus_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                             right_operand);
+  return binary_minus_functor<A, B>()(a, b);
 }
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+template<typename A, typename B>
 auto
-operator-(const LEFT_OPERAND& left_operand, const RIGHT_OPERAND& right_operand)
-  -> decltype(binary_minus(left_operand, right_operand))
+operator-(const A& a, const B& b) -> decltype(binary_minus(a, b))
 {
-  return binary_minus(left_operand, right_operand);
+  return binary_minus(a, b);
 }
 
 template<typename T, typename ENABLED = void>

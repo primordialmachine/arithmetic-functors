@@ -29,15 +29,14 @@
 
 namespace primordialmachine {
 
-template<typename OPERAND, typename ENABLED = void>
+template<typename A, typename ENABLED = void>
 struct square_root_functor;
 
-template<typename OPERAND>
+template<typename A>
 auto
-square_root(const OPERAND& operand)
-  -> decltype(square_root_functor<OPERAND>()(operand))
+square_root(const A& a) -> decltype(square_root_functor<A>()(a))
 {
-  return square_root_functor<OPERAND>()(operand);
+  return square_root_functor<A>()(a);
 }
 
 template<typename T, typename ENABLED = void>

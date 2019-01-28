@@ -29,22 +29,21 @@
 
 namespace primordialmachine {
 
-template<typename OPERAND, typename ENABLED = void>
+template<typename A, typename ENABLED = void>
 struct unary_minus_functor;
 
-template<typename OPERAND>
+template<typename A>
 auto
-unary_minus(const OPERAND& operand)
-  -> decltype(unary_minus_functor<OPERAND>()(operand))
+unary_minus(const A& a) -> decltype(unary_minus_functor<A>()(a))
 {
-  return unary_minus_functor<OPERAND>()(operand);
+  return unary_minus_functor<A>()(a);
 }
 
-template<typename OPERAND>
+template<typename A>
 auto
-operator-(const OPERAND& operand) -> decltype(unary_minus(operand))
+operator-(const A& a) -> decltype(unary_minus(a))
 {
-  return unary_minus(operand);
+  return unary_minus(a);
 }
 
 template<typename A, typename ENABLED = void>

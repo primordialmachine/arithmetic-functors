@@ -29,22 +29,21 @@
 
 namespace primordialmachine {
 
-template<typename OPERAND, typename ENABLED = void>
+template<typename A, typename ENABLED = void>
 struct unary_plus_functor;
 
-template<typename OPERAND>
+template<typename A>
 auto
-unary_plus(const OPERAND& operand)
-  -> decltype(unary_plus_functor<OPERAND>()(operand))
+unary_plus(const A& a) -> decltype(unary_plus_functor<A>()(a))
 {
-  return unary_plus_functor<OPERAND>()(operand);
+  return unary_plus_functor<A>()(a);
 }
 
-template<typename OPERAND>
+template<typename A>
 auto
-operator+(const OPERAND& operand) -> decltype(unary_plus(operand))
+operator+(const A& a) -> decltype(unary_plus(a))
 {
-  return unary_plus(operand);
+  return unary_plus(a);
 }
 
 template<typename T, typename ENABLED = void>

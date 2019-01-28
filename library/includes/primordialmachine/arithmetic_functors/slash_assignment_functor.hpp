@@ -29,29 +29,22 @@
 
 namespace primordialmachine {
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND, typename ENABLED = void>
+template<typename A, typename B, typename ENABLED = void>
 struct slash_assignment_functor;
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+template<typename A, typename B>
 auto
-slash_assignment(LEFT_OPERAND& left_operand, const RIGHT_OPERAND& right_operand)
-  -> decltype(
-    slash_assignment_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                            right_operand))
+slash_assignment(A& a, const B& b)
+  -> decltype(slash_assignment_functor<A, B>()(a, b))
 {
-  return slash_assignment_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                                 right_operand);
+  return slash_assignment_functor<A, B>()(a, b);
 }
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+template<typename A, typename B>
 auto
-operator/=(LEFT_OPERAND& left_operand, const RIGHT_OPERAND& right_operand)
-  -> decltype(
-    slash_assignment_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                            right_operand))
+operator/=(A& a, const B& b) -> decltype(slash_assignment_functor<A, B>()(a, b))
 {
-  return slash_assignment_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                                 right_operand);
+  return slash_assignment_functor<A, B>()(a, b);
 }
 
 template<typename T, typename ENABLED = void>

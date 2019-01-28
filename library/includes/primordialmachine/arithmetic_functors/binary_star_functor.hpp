@@ -29,26 +29,21 @@
 
 namespace primordialmachine {
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND, typename ENABLED = void>
+template<typename A, typename B, typename ENABLED = void>
 struct binary_star_functor;
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+template<typename A, typename B>
 auto
-binary_star(const LEFT_OPERAND& left_operand,
-            const RIGHT_OPERAND& right_operand)
-  -> decltype(binary_star_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                                 right_operand))
+binary_star(const A& a, const B& b)
+  -> decltype(binary_star_functor<A, B>()(a, b))
 {
-  return binary_star_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                            right_operand);
+  return binary_star_functor<A, B>()(a, b);
 }
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
-auto operator*(const LEFT_OPERAND& left_operand,
-               const RIGHT_OPERAND& right_operand)
-  -> decltype(binary_star(left_operand, right_operand))
+template<typename A, typename B>
+auto operator*(const A& a, const B& b) -> decltype(binary_star(a, b))
 {
-  return binary_star(left_operand, right_operand);
+  return binary_star(a, b);
 }
 
 template<typename T, typename ENABLED = void>

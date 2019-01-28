@@ -29,29 +29,22 @@
 
 namespace primordialmachine {
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND, typename ENABLED = void>
+template<typename A, typename B, typename ENABLED = void>
 struct minus_assignment_functor;
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+template<typename A, typename B>
 auto
-minus_assignment(LEFT_OPERAND& left_operand, const RIGHT_OPERAND& right_operand)
-  -> decltype(
-    minus_assignment_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                            right_operand))
+minus_assignment(A& a, const B& b)
+  -> decltype(minus_assignment_functor<A, B>()(a, b))
 {
-  return minus_assignment_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                                 right_operand);
+  return minus_assignment_functor<A, B>()(a, b);
 }
 
-template<typename LEFT_OPERAND, typename RIGHT_OPERAND>
+template<typename A, typename B>
 auto
-operator-=(LEFT_OPERAND& left_operand, const RIGHT_OPERAND& right_operand)
-  -> decltype(
-    minus_assignment_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                            right_operand))
+operator-=(A& a, const B& b) -> decltype(minus_assignment_functor<A, B>()(a, b))
 {
-  return minus_assignment_functor<LEFT_OPERAND, RIGHT_OPERAND>()(left_operand,
-                                                                 right_operand);
+  return minus_assignment_functor<A, B>()(a, b);
 }
 
 template<typename T, typename ENABLED = void>
