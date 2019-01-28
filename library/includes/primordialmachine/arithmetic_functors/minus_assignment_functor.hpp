@@ -43,12 +43,10 @@ minus_assignment(A& a, const B& b) noexcept(
 
 template<typename A, typename B>
 auto
-operator-=(A& a,
-           const B& b) noexcept(noexcept(minus_assignment_functor<A, B>()(a,
-                                                                          b)))
-  -> decltype(minus_assignment_functor<A, B>()(a, b))
+operator-=(A& a, const B& b) noexcept(noexcept(minus_assignment(a, b)))
+  -> decltype(minus_assignment(a, b))
 {
-  return minus_assignment_functor<A, B>()(a, b);
+  return minus_assignment(a, b);
 }
 
 template<typename T, typename ENABLED = void>
