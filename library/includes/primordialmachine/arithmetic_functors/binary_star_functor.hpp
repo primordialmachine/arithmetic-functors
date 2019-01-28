@@ -47,10 +47,8 @@ auto operator*(const A& a, const B& b) -> decltype(binary_star(a, b))
 }
 
 template<typename T, typename ENABLED = void>
-struct has_binary_star_functor
-{
-  static constexpr bool value = false;
-}; // struct has_binary_star_functor
+struct has_binary_star_functor : public std::false_type
+{}; // struct has_binary_star_functor
 
 template<typename A, typename B>
 constexpr bool has_binary_star_functor_v =
@@ -59,9 +57,7 @@ constexpr bool has_binary_star_functor_v =
 template<typename A, typename B>
 struct has_binary_star_functor<binary_star_functor<A, B>,
                                decltype(typeid(binary_star_functor<A, B>),
-                                        void())>
-{
-  static constexpr bool value = true;
-}; // struct has_binary_star_functor
+                                        void())> : public std::true_type
+{}; // struct has_binary_star_functor
 
 } // namespace primordialmachine

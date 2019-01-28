@@ -47,10 +47,8 @@ operator-(const A& a) -> decltype(unary_minus(a))
 }
 
 template<typename A, typename ENABLED = void>
-struct has_unary_minus_functor
-{
-  static constexpr bool value = false;
-}; // struct has_unary_minus_functor
+struct has_unary_minus_functor : public std::false_type
+{}; // struct has_unary_minus_functor
 
 template<typename A>
 constexpr bool has_unary_minus_functor_v =
@@ -59,8 +57,7 @@ constexpr bool has_unary_minus_functor_v =
 template<typename A>
 struct has_unary_minus_functor<unary_minus_functor<A>,
                                decltype(typeid(unary_minus_functor<A>), void())>
-{
-  static constexpr bool value = true;
-}; // struct has_unary_minus_functor
+  : public std::true_type
+{}; // struct has_unary_minus_functor
 
 } // namespace primordialmachine

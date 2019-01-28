@@ -47,10 +47,8 @@ operator+(const A& a) -> decltype(unary_plus(a))
 }
 
 template<typename T, typename ENABLED = void>
-struct has_unary_plus_functor
-{
-  static constexpr bool value = false;
-}; // struct has_unary_plus_functor
+struct has_unary_plus_functor : public std::false_type
+{}; // struct has_unary_plus_functor
 
 template<typename A>
 constexpr bool has_unary_plus_functor_v =
@@ -59,8 +57,7 @@ constexpr bool has_unary_plus_functor_v =
 template<typename A>
 struct has_unary_plus_functor<unary_plus_functor<A>,
                               decltype(typeid(unary_plus_functor<A>), void())>
-{
-  static constexpr bool value = true;
-}; // struct has_unary_plus_functor
+  : public std::true_type
+{}; // struct has_unary_plus_functor
 
 } // namespace primordialmachine

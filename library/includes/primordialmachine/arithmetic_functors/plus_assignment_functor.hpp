@@ -48,10 +48,8 @@ operator+=(A& a, const B& b) -> decltype(plus_assignment_functor<A, B>()(a, b))
 }
 
 template<typename T, typename ENABLED = void>
-struct has_plus_assignment_functor
-{
-  static constexpr bool value = false;
-}; // struct has_plus_assignment_functor
+struct has_plus_assignment_functor : public std::false_type
+{}; // struct has_plus_assignment_functor
 
 template<typename A, typename B>
 constexpr bool has_plus_assignment_functor_v =
@@ -61,8 +59,7 @@ template<typename A, typename B>
 struct has_plus_assignment_functor<
   plus_assignment_functor<A, B>,
   decltype(typeid(plus_assignment_functor<A, B>), void())>
-{
-  static constexpr bool value = true;
-}; // struct has_plus_assignment_functor
+  : public std::true_type
+{}; // struct has_plus_assignment_functor
 
 } // namespace primordialmachine
