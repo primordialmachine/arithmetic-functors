@@ -39,8 +39,8 @@
 \SetLibraryStaticLibrariesDirectoryPath{primordialmachine/arithmetic-functors/\newline\$(PlatformTarget.toLower())/\$(Configuration.toLower())/libraries}
 \SetLibraryStaticLibraryFileName{arithmetic-functors.lib}
 
-\SetLibraryVersion{v2.1}
-\SetLibraryRepository{https://github.com/primordialmachine/math-arithmetic-functors}
+\SetLibraryVersion{v2.3}
+\SetLibraryRepository{https://github.com/primordialmachine/arithmetic-functors}
 \SetAuthor{Michael Heilmann}
 \SetEmail{michaelheilmann@primordialmachine.com}
 
@@ -85,116 +85,15 @@ This library depends on the \href{https://github.com/primordialmachine/errors}{P
 The namespace this library is adding its declarations/definitions to.
 The added namespace elements are documented below.
 
-\input{functors}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texttt{binary\_plus\_functor} (struct)}
-A \textit{BinaryFunctorBase} representing the binary operation $\textit{left\_operand} + \textit{right\_operand}$.\newline
-
-\subsection{\texttt{binary\_plus} (function)}
-This library provides a function to invoke the \texttt{binary\_plus\_functor}.
-A possible implementation is given by\newline
-\texttt{template\textlangle typename A, typename B\textrangle\newline
-auto binary\_plus(const A\& a, const B\& b) -> decltype(binary\_plus\_functor\textlangle A, B\textrangle()(a, b))\newline
-\{ return binary\_plus\_functor\textlangle A, B\textrangle()(a, b); \}}
-
-\subsection{\texttt{operator+} (binary operator)}
-This library provides a binary plus operator overload to invoke the \texttt{binary\_plus\_functor}.
-A possible implementation is given by\newline
-\texttt{template\textlangle typename A, typename B\textrangle\newline
-auto operator+(const A\& a, const B\& b) -> decltype(binary\_plus(a, b))\newline
-\{ return binary\_plus(a, b); \}}
-
+\input{binary_plus_functor}
+\input{binary_minus_functor}
+\input{binary_star_functor}
+\input{binary_slash_functor}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texttt{binary\_minus\_functor} (struct)}
-A \textit{BinaryFunctorBase} representing the binary expression $\textit{left\_operand} - \textit{right\_operand}$.\newline
-
-\subsection{\texttt{binary\_minus} (function)}
-This library provides a function to invoke the \texttt{binary\_minus\_functor}.
-A possible implementation is given by\newline
-\texttt{template\textlangle typename A, typename B\textrangle\newline
-auto binary\_minus(const A\& a, const B\& b) -> decltype(binary\_minus\_functor\textlangle A, B\textrangle()(a, b))\newline
-\{ return binary\_minus\_functor\textlangle A, B\textrangle()(a, b); \}}
-
-\subsection{\texttt{operator-} (binary operator)}
-This library provides a binary minus operator overload to invoke the \texttt{binary\_minus\_functor}.
-A possible implementation is given by\newline
-\texttt{template\textlangle typename A, typename B\textrangle\newline
-auto operator-(const A\& a, const B\& b) -> decltype(binary\_minus(a, b))\newline
-\{ return binary\_minus(a, b); \}}
-
+\input{unary_plus_functor}
+\input{unary_minus_functor}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texttt{binary\_star\_functor} (struct)}
-A \textit{BinaryFunctorBase} representing the binary expression $\textit{left\_operand} \cdot \textit{right\_operand}$.\newline
-
-\subsection{\texttt{binary\_star} (function)}
-This library provides a function to invoke the \texttt{binary\_star\_functor}.
-A possible implementation is given by\newline
-\texttt{template\textlangle typename A, typename B\textrangle\newline
-auto binary\_star(const A\& a, const B\& b) -> decltype(binary\_star\_functor\textlangle A, B\textrangle()(a, b))\newline
-\{ return binary\_star\_functor\textlangle A, B\textrangle()(a, b); \}}
-
-\subsection{\texttt{operator*} (binary operator)}
-This library provides a binary star operator overload to invoke the \texttt{binary\_star\_functor}.
-A possible implementation is given by\newline
-\texttt{template\textlangle typename A, typename B\textrangle\newline
-auto operator*(const A\& a, const B\& b) -> decltype(binary\_star(a, b))\newline
-\{ return binary\_star(a, b); \}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texttt{binary\_slash\_functor} (struct)}
-A \textit{BinaryFunctorBase} representing the binary expression $\textit{left\_operand} / \textit{right\_operand}$.\newline
-
-\subsection{\texttt{binary\_slash} (function)}
-This library provides a function to invoke the \texttt{binary\_slash\_functor}.
-A possible implementation is given by\newline
-\texttt{template\textlangle typename A, typename B\textrangle\newline
-auto binary\_slash(const A\& a, const B\& b) -> decltype(binary\_slash\_functor\textlangle A, B\textrangle()(a, b))\newline
-\{ return binary\_slash\_functor\textlangle A, B\textrangle()(a, b); \}}
-
-\subsection{\texttt{operator/} (binary operator)}
-This library provides a binary star operator overload to invoke the \texttt{binary\_star\_functor}.
-A possible implementation is given by\newline
-\texttt{template\textlangle typename A, typename B\textrangle\newline
-auto operator/(const A\& a, const B\& b) -> decltype(binary\_slash(a, b))\newline
-\{ return binary\_slash(a, b); \}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texttt{unary\_plus\_functor} (struct)}
-A \textit{UnaryFunctorBase} representing the unary expression $+\textit{operand}$.\newline
-
-\subsection{\texttt{unary\_plus} (function)}
-This library provides a function to invoke the \texttt{unary\_plus\_functor}.
-A possible implementation is given by\newline
-\texttt{template\textlangle typename A\textrangle\newline
-auto unary\_plus(const A\& a) -> decltype(unary\_plus\_functor\textlangle A\textrangle()(a))\newline
-\{ return unary\_plus\_functor\textlangle A\textrangle()(a); \}}
-
-\subsection{\texttt{operator+} (unary operator)}
-This library provides a unary plus operator overload to invoke the \texttt{unary\_plus\_functor}.
-A possible implementation is given by\newline
-\texttt{template\textlangle typename A\textrangle\newline
-auto operator+(const A\& a) -> decltype(unary\_plus(a))\newline
-\{ return unary\_plus(a); \}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texttt{unary\_minus\_functor} (struct)}
-A \textit{UnaryFunctorBase} representing the unary expression $-\textit{operand}$.\newline
-
-\subsection{\texttt{unary\_minus} (function)}
-This library provides a function to invoke the \texttt{unary\_minus\_functor}.
-A possible implementation is given by\newline
-\texttt{template\textlangle typename A\textrangle\newline
-auto unary\_minus(const A\& a) -> decltype(unary\_minus\_functor\textlangle A\textrangle()(a))\newline
-\{ return unary\_minus\_functor\textlangle A\textrangle()(a); \}}
-
-\subsection{\texttt{operator+} (unary operator)}
-This library provides a unary minus operator overload to invoke the \texttt{unary\_minus\_functor}.
-A possible implementation is given by\newline
-\texttt{template\textlangle typename A\textrangle\newline
-auto operator-(const A\& a) -> decltype(unary\_minus(a))\newline
-\{ return unary\_minus(a); \}}
-
 \input{plus_assignment_functor}
 \input{minus_assignment_functor}
 \input{star_assignment_functor}
@@ -202,13 +101,18 @@ auto operator-(const A\& a) -> decltype(unary\_minus(a))\newline
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\texttt{square\_root\_functor} (struct)}
-A \textit{UnaryFunctorBase} representing the unary expression $\sqrt[2]{operand}$.\newline
+A \textit{FunctorBase} (see \cite{functors}) with one template parameter \texttt{A} and the
+\texttt{ENABLED} parameter. Its specializations are unary  \textit{Functors}   representing
+the operation $\sqrt[2]{\texttt{x}_0}$.\newline
 
 \subsection{\texttt{square\_root} (function)}
 This library provides a function to invoke the \texttt{square\_root\_functor}.
 A possible implementation is given by\newline
 \texttt{template\textlangle typename A\textrangle\newline
-auto square\_root(const A\& a) -> decltype(square\_root\_functor\textlangle A\textrangle()(a))\newline
+auto\newline
+square\_root(const A\& a)\newline
+noexcept(noexcept(square\_root\_functor\textlangle A \textrangle()(a)))\newline
+-> decltype(square\_root\_functor\textlangle A\textrangle()(a))\newline
 \{ return square\_root\_functor\textlangle A\textrangle()(a); \}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -252,5 +156,7 @@ It raises its corresponding \texttt{underflow\_exception}.
 The term underflow refers to the situation in which an arithmetic value is too small (in terms of
 its magnitude) to be represented. Its constructor takes a single argument which
 is a \texttt{error\_position} value.
+
+\input{bibliography}
 
 \end{document}

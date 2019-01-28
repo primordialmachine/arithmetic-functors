@@ -1,0 +1,23 @@
+\section{\texttt{binary\_minus\_functor} (struct)}
+A \textit{FunctorBase} (see \cite{functors}) with two template parameters \texttt{A} and \texttt{B} followed by the \texttt{ENABLED} template parameter.
+Its specializations are binary \textit{Functor}s representing the operation $\texttt{a - b}$.
+
+\subsection{\texttt{binary\_minus} (function)}
+This library provides a function to invoke the \texttt{binary\_minus\_functor}.
+A possible implementation is given by\newline
+\texttt{template\textlangle typename A, typename B\textrangle\newline
+auto\newline
+binary\_minus(const A\& a, const B\& b)\newline
+noexcept(noexcept(binary\_minus\_functor\textlangle A, B\textrangle()(a, b)))\newline
+-> decltype(binary\_minus\_functor\textlangle A, B\textrangle()(a, b))\newline
+\{ return binary\_minus\_functor\textlangle A, B\textrangle()(a, b); \}}
+
+\subsection{\texttt{operator-} (binary operator)}
+This library provides a binary minus operator overload to invoke the \texttt{binary\_minus\_functor}.
+A possible implementation is given by\newline
+\texttt{template\textlangle typename A, typename B\textrangle\newline
+auto\newline
+operator-(const A\& a, const B\& b)\newline
+noexcept(noexcept(binary\_minus(a, b)))
+-> decltype(binary\_minus(a, b))\newline
+\{ return binary\_minus(a, b); \}}
