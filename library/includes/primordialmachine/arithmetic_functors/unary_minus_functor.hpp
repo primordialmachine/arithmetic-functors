@@ -34,14 +34,16 @@ struct unary_minus_functor;
 
 template<typename A>
 auto
-unary_minus(const A& a) -> decltype(unary_minus_functor<A>()(a))
+unary_minus(const A& a) noexcept(noexcept(unary_minus_functor<A>()(a)))
+  -> decltype(unary_minus_functor<A>()(a))
 {
   return unary_minus_functor<A>()(a);
 }
 
 template<typename A>
 auto
-operator-(const A& a) -> decltype(unary_minus(a))
+operator-(const A& a) noexcept(noexcept(unary_minus(a)))
+  -> decltype(unary_minus(a))
 {
   return unary_minus(a);
 }

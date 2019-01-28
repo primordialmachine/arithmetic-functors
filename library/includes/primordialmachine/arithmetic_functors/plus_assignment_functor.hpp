@@ -34,7 +34,8 @@ struct plus_assignment_functor;
 
 template<typename A, typename B>
 auto
-plus_assignment(A& a, const B& b)
+plus_assignment(A& a, const B& b) noexcept(
+  noexcept(plus_assignment_functor<A, B>()(a, b)))
   -> decltype(plus_assignment_functor<A, B>()(a, b))
 {
   return plus_assignment_functor<A, B>()(a, b);
@@ -42,7 +43,9 @@ plus_assignment(A& a, const B& b)
 
 template<typename A, typename B>
 auto
-operator+=(A& a, const B& b) -> decltype(plus_assignment_functor<A, B>()(a, b))
+operator+=(A& a,
+           const B& b) noexcept(noexcept(plus_assignment_functor<A, B>()(a, b)))
+  -> decltype(plus_assignment_functor<A, B>()(a, b))
 {
   return plus_assignment_functor<A, B>()(a, b);
 }

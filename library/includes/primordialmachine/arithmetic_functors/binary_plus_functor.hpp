@@ -34,7 +34,8 @@ struct binary_plus_functor;
 
 template<typename A, typename B>
 auto
-binary_plus(const A& a, const B& b)
+binary_plus(const A& a,
+            const B& b) noexcept(noexcept(binary_plus_functor<A, B>()(a, b)))
   -> decltype(binary_plus_functor<A, B>()(a, b))
 {
   return binary_plus_functor<A, B>()(a, b);
@@ -42,7 +43,8 @@ binary_plus(const A& a, const B& b)
 
 template<typename A, typename B>
 auto
-operator+(const A& a, const B& b) -> decltype(binary_plus(a, b))
+operator+(const A& a, const B& b) noexcept(noexcept(binary_plus(a, b)))
+  -> decltype(binary_plus(a, b))
 {
   return binary_plus(a, b);
 }

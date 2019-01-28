@@ -34,14 +34,16 @@ struct binary_star_functor;
 
 template<typename A, typename B>
 auto
-binary_star(const A& a, const B& b)
+binary_star(const A& a,
+            const B& b) noexcept(noexcept(binary_star_functor<A, B>()(a, b)))
   -> decltype(binary_star_functor<A, B>()(a, b))
 {
   return binary_star_functor<A, B>()(a, b);
 }
 
 template<typename A, typename B>
-auto operator*(const A& a, const B& b) -> decltype(binary_star(a, b))
+auto operator*(const A& a, const B& b) noexcept(noexcept(binary_star(a, b)))
+  -> decltype(binary_star(a, b))
 {
   return binary_star(a, b);
 }

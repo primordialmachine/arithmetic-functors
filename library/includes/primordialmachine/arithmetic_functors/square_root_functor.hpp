@@ -34,7 +34,8 @@ struct square_root_functor;
 
 template<typename A>
 auto
-square_root(const A& a) -> decltype(square_root_functor<A>()(a))
+square_root(const A& a) noexcept(noexcept(square_root_functor<A>()(a)))
+  -> decltype(square_root_functor<A>()(a))
 {
   return square_root_functor<A>()(a);
 }

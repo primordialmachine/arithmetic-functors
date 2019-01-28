@@ -34,7 +34,8 @@ struct minus_assignment_functor;
 
 template<typename A, typename B>
 auto
-minus_assignment(A& a, const B& b)
+minus_assignment(A& a, const B& b) noexcept(
+  noexcept(minus_assignment_functor<A, B>()(a, b)))
   -> decltype(minus_assignment_functor<A, B>()(a, b))
 {
   return minus_assignment_functor<A, B>()(a, b);
@@ -42,7 +43,10 @@ minus_assignment(A& a, const B& b)
 
 template<typename A, typename B>
 auto
-operator-=(A& a, const B& b) -> decltype(minus_assignment_functor<A, B>()(a, b))
+operator-=(A& a,
+           const B& b) noexcept(noexcept(minus_assignment_functor<A, B>()(a,
+                                                                          b)))
+  -> decltype(minus_assignment_functor<A, B>()(a, b))
 {
   return minus_assignment_functor<A, B>()(a, b);
 }

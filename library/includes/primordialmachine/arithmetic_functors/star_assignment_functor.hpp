@@ -34,7 +34,8 @@ struct star_assignment_functor;
 
 template<typename A, typename B>
 auto
-star_assignment(A& a, const B& b)
+star_assignment(A& a, const B& b) noexcept(
+  noexcept(star_assignment_functor<A, B>()(a, b)))
   -> decltype(star_assignment_functor<A, B>()(a, b))
 {
   return star_assignment_functor<A, B>()(a, b);
@@ -42,7 +43,8 @@ star_assignment(A& a, const B& b)
 
 template<typename A, typename B>
 auto
-operator*=(A& a, const B& b) -> decltype(star_assignment(a, b))
+operator*=(A& a, const B& b) noexcept(noexcept(star_assignment(a, b)))
+  -> decltype(star_assignment(a, b))
 {
   return star_assignment(a, b);
 }

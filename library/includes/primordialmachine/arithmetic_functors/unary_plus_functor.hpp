@@ -34,14 +34,16 @@ struct unary_plus_functor;
 
 template<typename A>
 auto
-unary_plus(const A& a) -> decltype(unary_plus_functor<A>()(a))
+unary_plus(const A& a) noexcept(noexcept(unary_plus_functor<A>()(a)))
+  -> decltype(unary_plus_functor<A>()(a))
 {
   return unary_plus_functor<A>()(a);
 }
 
 template<typename A>
 auto
-operator+(const A& a) -> decltype(unary_plus(a))
+operator+(const A& a) noexcept(noexcept(unary_plus(a)))
+  -> decltype(unary_plus(a))
 {
   return unary_plus(a);
 }

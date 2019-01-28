@@ -34,7 +34,8 @@ struct slash_assignment_functor;
 
 template<typename A, typename B>
 auto
-slash_assignment(A& a, const B& b)
+slash_assignment(A& a, const B& b) noexcept(
+  noexcept(slash_assignment_functor<A, B>()(a, b)))
   -> decltype(slash_assignment_functor<A, B>()(a, b))
 {
   return slash_assignment_functor<A, B>()(a, b);
@@ -42,7 +43,10 @@ slash_assignment(A& a, const B& b)
 
 template<typename A, typename B>
 auto
-operator/=(A& a, const B& b) -> decltype(slash_assignment_functor<A, B>()(a, b))
+operator/=(A& a,
+           const B& b) noexcept(noexcept(slash_assignment_functor<A, B>()(a,
+                                                                          b)))
+  -> decltype(slash_assignment_functor<A, B>()(a, b))
 {
   return slash_assignment_functor<A, B>()(a, b);
 }

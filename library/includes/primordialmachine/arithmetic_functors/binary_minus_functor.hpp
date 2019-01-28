@@ -34,7 +34,8 @@ struct binary_minus_functor;
 
 template<typename A, typename B>
 auto
-binary_minus(const A& a, const B& b)
+binary_minus(const A& a,
+             const B& b) noexcept(noexcept(binary_minus_functor<A, B>()(a, b)))
   -> decltype(binary_minus_functor<A, B>()(a, b))
 {
   return binary_minus_functor<A, B>()(a, b);
@@ -42,7 +43,8 @@ binary_minus(const A& a, const B& b)
 
 template<typename A, typename B>
 auto
-operator-(const A& a, const B& b) -> decltype(binary_minus(a, b))
+operator-(const A& a, const B& b) noexcept(noexcept(binary_minus(a, b)))
+  -> decltype(binary_minus(a, b))
 {
   return binary_minus(a, b);
 }

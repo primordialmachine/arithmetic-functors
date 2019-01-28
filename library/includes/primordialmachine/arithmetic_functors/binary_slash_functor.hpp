@@ -34,7 +34,8 @@ struct binary_slash_functor;
 
 template<typename A, typename B>
 auto
-binary_slash(const A& a, const B& b)
+binary_slash(const A& a,
+             const B& b) noexcept(noexcept(binary_slash_functor<A, B>()(a, b)))
   -> decltype(binary_slash_functor<A, B>()(a, b))
 {
   return binary_slash_functor<A, B>()(a, b);
@@ -42,7 +43,8 @@ binary_slash(const A& a, const B& b)
 
 template<typename A, typename B>
 auto
-operator/(const A& a, const B& b) -> decltype(binary_slash(a, b))
+operator/(const A& a, const B& b) noexcept(noexcept(binary_slash(a, b)))
+  -> decltype(binary_slash(a, b))
 {
   return binary_slash(a, b);
 }
