@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// Primordial Machine's Arithmetic Functors Library
-// Copyright (c) 2017-2019 Michael Heilmann
+// Primordial Machine's Functors Library
+// Copyright (C) 2019 Michael Heilmann
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the
@@ -29,35 +29,8 @@
 
 namespace primordialmachine {
 
-template<typename A, typename B, typename ENABLED = void>
-struct binary_star_functor;
+using true_type = std::true_type;
 
-template<typename A, typename B>
-auto
-binary_star(const A& a, const B& b)
-  -> decltype(binary_star_functor<A, B>()(a, b))
-{
-  return binary_star_functor<A, B>()(a, b);
-}
-
-template<typename A, typename B>
-auto operator*(const A& a, const B& b) -> decltype(binary_star(a, b))
-{
-  return binary_star(a, b);
-}
-
-template<typename T, typename ENABLED = void>
-struct has_binary_star_functor : public false_type
-{}; // struct has_binary_star_functor
-
-template<typename A, typename B>
-constexpr bool has_binary_star_functor_v =
-  has_binary_star_functor<binary_star_functor<A, B>>::value;
-
-template<typename A, typename B>
-struct has_binary_star_functor<binary_star_functor<A, B>,
-                               decltype(typeid(binary_star_functor<A, B>),
-                                        void())> : public true_type
-{}; // struct has_binary_star_functor
+using false_type = std::false_type;
 
 } // namespace primordialmachine

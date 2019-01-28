@@ -48,7 +48,7 @@ operator/(const A& a, const B& b) -> decltype(binary_slash(a, b))
 }
 
 template<typename T, typename ENABLED = void>
-struct has_binary_slash_functor : public std::false_type
+struct has_binary_slash_functor : public false_type
 {}; // struct has_binary_slash_functor
 
 template<typename A, typename B>
@@ -58,7 +58,7 @@ constexpr bool has_binary_slash_functor_v =
 template<typename A, typename B>
 struct has_binary_slash_functor<binary_slash_functor<A, B>,
                                 decltype(typeid(binary_slash_functor<A, B>),
-                                         void())> : public std::true_type
+                                         void())> : public true_type
 {}; // struct has_binary_slash_functor
 
 } // namespace primordialmachine

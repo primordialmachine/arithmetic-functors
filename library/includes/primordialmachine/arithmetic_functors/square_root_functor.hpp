@@ -40,7 +40,7 @@ square_root(const A& a) -> decltype(square_root_functor<A>()(a))
 }
 
 template<typename T, typename ENABLED = void>
-struct has_square_root_functor : public std::false_type
+struct has_square_root_functor : public false_type
 {}; // struct has_square_root_functor
 
 template<typename A>
@@ -50,7 +50,7 @@ constexpr bool has_square_root_functor_v =
 template<typename A>
 struct has_square_root_functor<square_root_functor<A>,
                                decltype(typeid(square_root_functor<A>), void())>
-  : public std::true_type
+  : public true_type
 {}; // struct has_square_root_functor
 
 } // namespace primordialmachine

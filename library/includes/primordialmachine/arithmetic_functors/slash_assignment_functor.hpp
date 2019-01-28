@@ -48,7 +48,7 @@ operator/=(A& a, const B& b) -> decltype(slash_assignment_functor<A, B>()(a, b))
 }
 
 template<typename T, typename ENABLED = void>
-struct has_slash_assignment_functor : public std::false_type
+struct has_slash_assignment_functor : public false_type
 {}; // struct has_slash_assignment_functor
 
 template<typename A, typename B>
@@ -58,8 +58,7 @@ constexpr bool has_slash_assignment_functor_v =
 template<typename A, typename B>
 struct has_slash_assignment_functor<
   slash_assignment_functor<A, B>,
-  decltype(typeid(slash_assignment_functor<A, B>), void())>
-  : public std::true_type
+  decltype(typeid(slash_assignment_functor<A, B>), void())> : public true_type
 {}; // struct has_slash_assignment_functor
 
 } // namespace primordialmachine
