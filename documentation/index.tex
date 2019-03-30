@@ -26,10 +26,7 @@
 \documentclass[oneside]{book}
 
 \input{common}
-\setlength{\parindent}{0mm}
-
-\SetOrganization{Primordial Machine's}
-\SetLibraryName{Arithmetic Functors Library}
+\input{meta}
 
 \SetLibraryIncludeFileName{include.hpp}
 \SetLibraryIncludesDirectoryPath{primordialmachine/arithmetic-functors/\newline\$(PlatformTarget.toLower())/\$(Configuration.toLower())/includes}
@@ -38,11 +35,6 @@
 
 \SetLibraryStaticLibrariesDirectoryPath{primordialmachine/arithmetic-functors/\newline\$(PlatformTarget.toLower())/\$(Configuration.toLower())/libraries}
 \SetLibraryStaticLibraryFileName{arithmetic-functors.lib}
-
-\SetLibraryVersion{v2.3}
-\SetLibraryRepository{https://github.com/primordialmachine/arithmetic-functors}
-\SetAuthor{Michael Heilmann}
-\SetEmail{michaelheilmann@primordialmachine.com}
 
 \SetDocumentType{User Manual}
 
